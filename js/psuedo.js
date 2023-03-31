@@ -17,7 +17,7 @@ GAME START:
 -A minimum of a $1 bet is needed in order to proceed and keep continuation of game.
 -Dealer deals P1 2 Cards
 -2 cards face UP given to P1 after betting. 
--2 cards face DOWN given to dealer after
+-2 cards, 1 face UP & 1 face DOWN given to dealer after
 ? Find a way to alternate math.random between P1 and dealer when dealing cards?
 
 GAME TURNS:
