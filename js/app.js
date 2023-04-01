@@ -20,15 +20,7 @@ class Deck {
   }
 }
 
-// // Picks random Suit from suits array.
-// let suitIdx = Math.floor(Math.random() * suits.length)
-// let suitPicked = suits[suitIdx]
-// console.log(suitPicked)
-
-// // Picks random Value form values array.
-// let valueIdx = Math.floor(Math.random() * values.length)
-// let valuePicked = values[valueIdx]
-// console.log(valuePicked)
+let chosenCards = []
 /* ------------------- CACHED REFERENCES ------------------- */
 pickCardBtn = document.getElementById('pick-card-btn')
 
@@ -42,17 +34,18 @@ pickCardBtn.addEventListener('click', handleClick)
 
 /* ------------------- FUNCTIONS ------------------- */
 function handleClick(){
+  // Picks random Suit from suits array.
+let suitIdx = Math.floor(Math.random() * suits.length)
+let suitPicked = suits[suitIdx]
+
+// Picks random Value form values array.
+let valueIdx = Math.floor(Math.random() * values.length)
+let valuePicked = values[valueIdx]
+cardPicked = (`${valuePicked} ${suitPicked}`)
+chosenCards.push(cardPicked)
 render()
 }
 
 function render(){
-  // Picks random Suit from suits array.
-  let suitIdx = Math.floor(Math.random() * suits.length)
-  let suitPicked = suits[suitIdx]
-  console.log(suitPicked)
-  
-  // Picks random Value form values array.
-  let valueIdx = Math.floor(Math.random() * values.length)
-  let valuePicked = values[valueIdx]
-  console.log(valuePicked)
+console.log(chosenCards)
 }
