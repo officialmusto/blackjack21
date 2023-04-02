@@ -1,3 +1,68 @@
 body{
   background-color: black;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+#pick-card-btn {
+color: rgb(237, 229, 233);
+width: 300px;
+height: 200px;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 50px;
+transition: opacity 200ms ease-in-out 0ms;
+border-radius: 17px;
+border: none;
+background-color: rgb(228, 147, 161);
+}
+#bet-btn {
+color: rgb(237, 229, 233);
+width: 300px;
+height: 200px;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 50px;
+transition: opacity 200ms ease-in-out 0ms;
+border-radius: 17px;
+border: none;
+background-color: rgb(228, 147, 161);
+}
+#hit-btn {
+color: rgb(237, 229, 233);
+width: 300px;
+height: 200px;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 50px;
+transition: opacity 200ms ease-in-out 0ms;
+border-radius: 17px;
+border: none;
+background-color: rgb(228, 147, 161);
+}
+#stay-btn {
+color: rgb(237, 229, 233);
+width: 300px;
+height: 200px;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 50px;
+transition: opacity 200ms ease-in-out 0ms;
+border-radius: 17px;
+border: none;
+background-color: rgb(228, 147, 161);
+}
+
+#pick-card-btn:hover{
+  background-color: rgb(181, 85, 101);
+  opacity: .8;
+}
+#bet-btn:hover{
+  background-color: rgb(181, 85, 101);
+  opacity: .8;
+}
+#hit-btn:hover{
+  background-color: rgb(181, 85, 101);
+  opacity: .8;
+}
+#stay-btn:hover{
+  background-color: rgb(181, 85, 101);
+  opacity: .8;
 }
