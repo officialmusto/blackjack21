@@ -50,6 +50,7 @@ init()
 
 function init(){
   playerOneTurn()
+  render()
 }
 
 function handleClick() {
@@ -80,6 +81,8 @@ function generateCard(){
 function playerOneTurn(){
   if (playerOneHand.length < 2){
     generateCard()
+  } else if (playerOneHand.length > 4){
+    console.log('YOU WIN')
   }
   
 }
@@ -97,17 +100,24 @@ function checkDecks(card){
 //? HOW TO MAKE THIS FUNCTION NEEDED? RE-WATCH OLD LECTURE
 // Renders Turn of P1
   function render() {
+    frontCard2.style.display = 'none'
     frontCard3.style.display = 'none'
     frontCard4.style.display = 'none'
+
     frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[0].combined}.svg`)
-    frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[1].combined}.svg`)
   
+    if (playerOneDeck[1]) {
+      frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[1].combined}.svg`)
+      frontCard2.style.display = 'block'
+    }
     if (playerOneDeck[2]) {
       frontCard3.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[2].combined}.svg`)
+      frontCard3.style.display = 'block'
     }
   
     if (playerOneDeck[3]) {
       frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[3].combined}.svg`)
+      frontCard4.style.display = 'block'
     }
   }
   

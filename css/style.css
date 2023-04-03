@@ -37,9 +37,14 @@ body {
   filter: drop-shadow(10px 10px 20px #575757);
 } */
 
+.front-of-cards {
+  display: flex;
+}
+
 #card-front1, #card-front2, #card-front3, #card-front4 {
-  display: flexbox;
+  display: flex;
   height: 200px;
+  flex-direction: row;
   position: relative;
   top: 20rem;
   border: none;
