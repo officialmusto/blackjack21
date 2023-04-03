@@ -50,6 +50,7 @@ const frontOfCards = document.querySelectorAll('.front-of-cards')
 hitBtn.addEventListener('click', handleClick)
 stayBtn.addEventListener('click', stayLogic)
 betBtn.addEventListener('click', toggleSlider)
+resetBtn.addEventListener('click', resetGame)
 
 
 
@@ -58,9 +59,9 @@ betBtn.addEventListener('click', toggleSlider)
 init()
 
 function init(){
-  toggleSlider()
   playerOneTurn()
   render()
+  betSlider.style.display = 'none'
 }
 
 function handleClick() {
@@ -120,20 +121,20 @@ function addPlayerCards() {
     betSlider.style.display = 'block'
     finalMessage.style.color = 'red'
     resetBtn.style.display = 'block'
-    finalMessage.innerText = 'Lost your bet, try again?'
+    finalMessage.innerText = `Lost your bet, try again? \nTOTAL: ${totalValue}`
     hitBtn.disabled = true
     return
   } else if (totalValue === 21){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     finalMessage.style.color = 'green'
-    finalMessage.innerText = '21 COUNT! YOU WIN'
+    finalMessage.innerText = `21 COUNT! YOU WIN \nTOTAL: ${totalValue}`
     return hitBtn.disabled = true
   } else if (totalValue < 21 && playerOneHand.length === 5){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     finalMessage.style.color = 'green'
-    finalMessage.innerText = 'OVER 5, BUT UNDER 21 - YOU WIN'
+    finalMessage.innerText = `VER 5, BUT UNDER 21 - YOU WIN \nTOTAL: ${totalValue}`
     return hitBtn.disabled = true
   }
 }
@@ -165,6 +166,19 @@ function blurFrontOfCards() {
 function stayLogic(){
   finalMessage.innerText = 'BUTTON PRESSED!'
 }
+
+function resetGame() {
+  playerOneHand.length = 0
+  frontOfCards.forEach(function(card){
+    card.style.filter = 'none'
+  })
+  finalMessage.innerText = ''
+  hitBtn.disabled = false
+  betSlider.style.display = 'none'
+  init()
+}
+
+
 // Renders Turn of P1
 function render() {
   resetBtn.style.display = 'none'
