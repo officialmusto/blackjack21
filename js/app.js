@@ -15,6 +15,7 @@ class Deck {
   }
 }
 
+
 // Establishing Cards Class to create an object with two key/value pairs that will be the selected random card from the 'HIT button.
 class Card{
   constructor(suit, value){
@@ -24,10 +25,10 @@ class Card{
 }
 
 
-let chosenCard = new Card()
 
 // Created a variable to utilize the '.push()' method and push the selected card into the dispose pile.
 let decks = new Deck()
+let disposedDeck = decks.disposed
 /* ------------------- CACHED REFERENCES ------------------- */
 const pickCardBtn = document.getElementById('pick-card-btn')
 
@@ -47,45 +48,68 @@ init()
 function init(){}
 
 function handleClick() {
-  checkForDuplicates()
+  // checkForDuplicates()
   generateCard()
   render()
 }
-  
-  function generateCard(){
+
+function generateCard(){
+// Checks to see if 52 cards are in Deck.disposed Class array
+  if (disposedDeck.length === 52){
+    return
+  }
   // Picks random Suit from suits array.
   let suitIdx = Math.floor(Math.random() * suits.length)
   let suitPicked = suits[suitIdx]
-
+  
   // Picks random Value from values array.
   let valueIdx = Math.floor(Math.random() * values.length)
   let valuePicked = values[valueIdx]
-
+  
   // Combines both value & suit into an object within Card class.
   let chosenCard = new Card(suitPicked, valuePicked)
-
-  // Sends chosen card to disposed pile. //! WILL BE CHANGED TO A MORE-APPROPIATE DECK.
-  decks.disposed.push(chosenCard)
+  
+// SOLVED DUPLICATES ISSUE - HUNTER LONG
+//IF DUPLICATE === TRUE, GENERATE NEW CARD, ELSE PUSH CHOSEN CARD TO ARRAY
+  if (checkDecks(chosenCard)){
+  generateCard()
+}   else {
+  // Sends chosen card to disposed pile.
+  disposedDeck.push(chosenCard)
+  chosenCard = new Card()
 }
-  
-  // Checks for Duplicates in decks Class. 
-  function checkForDuplicates() {
-    let isDuplicate = false;
-  
-    //? FIGURE OUT HOW TO NOT STORE DUPLICATES.
-    decks.disposed.forEach(function(disposedCard) {
-      disposedCard = console.log(disposedCard)
-      // if (disposedCard.suit === chosenCard.suit && disposedCard.value === chosenCard.value) {
-      //   isDuplicate = true
-      // }
-    })
-  
-    return isDuplicate;
-  }
-  
+}
+
+
+
+function checkDecks(card){
+  let duplicate = false
+  disposedDeck.forEach(function(obj){
+    if (obj.suit === card.suit && obj.value === card.value) {
+      duplicate = true
+    }
+  })
+  return duplicate
+}
 
 //? HOW TO MAKE THIS FUNCTION NEEDED? RE-WATCH OLD LECTURE
   // Renders Turn of P1
   function render(){
-    console.log(decks.disposed)
+    console.log(disposedDeck)
   }
+
+  
+
+
+
+
+
+
+
+  
+  //todo CREATE BET MECHANICS
+  //todo CREATE PLAYER 1 FIRST TURN LOGIC
+  //todo CREATE DEALER TURN LOGIC
+  //todo CREATE TURN LOGIC
+  //todo CREATE CARD FLIPS, CARD DISPOSING, AND DECK MECHANICS
+  

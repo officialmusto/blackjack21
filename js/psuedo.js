@@ -93,6 +93,6 @@ GAME TURNS:
     !IF DEALER HAND < P1 HAND, AUTOMATICALLY WIN, MULTIPLY BETS BY 1.5X, AND COMMENCE NEXT TURN
 
 !-IF BET TOTAL === 0, AUTOMATICALLY LOSE, FOLD ALL BETS, AND COMMENCE NEW GAME
-
+also end game if P1 hand is revealed
 
 -------------------------------------------------------------------------------- */
