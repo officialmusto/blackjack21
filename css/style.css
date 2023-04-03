@@ -1,68 +1,83 @@
-body{
-  background-color: black;
+html {
+  background-color: rgb(204, 198, 198);
+  /* background-color: rgb(44, 44, 85); */
+}
+
+body {
   display: flex;
-  justify-content: space-between;
-  margin: 20px;
+  align-items: center;
+  justify-content: center;
+
 }
 
-#pick-card-btn {
-color: rgb(237, 229, 233);
-width: 300px;
-height: 200px;
-font-family: 'Josefin Sans', sans-serif;
-font-size: 50px;
-transition: opacity 200ms ease-in-out 0ms;
-border-radius: 17px;
-border: none;
-background-color: rgb(228, 147, 161);
+.blackJack {
+  display: flexbox;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 100px;
+  color: bisque;
+  top: 1px;
+  filter: drop-shadow(5px 5px 5px #4b4b4b);
 }
+
+.back-of-cards {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  position: absolute;
+  top: 12rem;
+  height: 250px;
+  width: 700px;
+}
+
+#back-red, #back-blue {
+  border: none;
+  filter: drop-shadow(10px 10px 20px #575757);
+}
+
+div > button {
+  align-content: center;
+  border: none;
+  border-radius: 15px;
+  font-size: x-large;
+  color:#c59963;
+  font-family: 'Josefin Sans', sans-serif;
+  height: 50px;
+  width: 150px;
+  background-color: #ffe4c4;
+}
+
 #bet-btn {
-color: rgb(237, 229, 233);
-width: 300px;
-height: 200px;
-font-family: 'Josefin Sans', sans-serif;
-font-size: 50px;
-transition: opacity 200ms ease-in-out 0ms;
-border-radius: 17px;
-border: none;
-background-color: rgb(228, 147, 161);
+  color: rgb(28, 149, 28);
 }
-#hit-btn {
-color: rgb(237, 229, 233);
-width: 300px;
-height: 200px;
-font-family: 'Josefin Sans', sans-serif;
-font-size: 50px;
-transition: opacity 200ms ease-in-out 0ms;
-border-radius: 17px;
-border: none;
-background-color: rgb(228, 147, 161);
-}
-#stay-btn {
-color: rgb(237, 229, 233);
-width: 300px;
-height: 200px;
-font-family: 'Josefin Sans', sans-serif;
-font-size: 50px;
-transition: opacity 200ms ease-in-out 0ms;
-border-radius: 17px;
-border: none;
-background-color: rgb(228, 147, 161);
+#stay-btn{
+  color: rgb(204, 30, 30);
 }
 
-#pick-card-btn:hover{
-  background-color: rgb(181, 85, 101);
-  opacity: .8;
+#hit-btn{
+  color: rgb(26, 99, 172);
 }
-#bet-btn:hover{
-  background-color: rgb(181, 85, 101);
-  opacity: .8;
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+  top: 30rem;
+  height: 80px;
+  width: 700px;
+  filter: drop-shadow(5px 5px 5px #878787);
 }
-#hit-btn:hover{
-  background-color: rgb(181, 85, 101);
-  opacity: .8;
-}
-#stay-btn:hover{
-  background-color: rgb(181, 85, 101);
-  opacity: .8;
+
+div > h1 {
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  color: red;
 }
