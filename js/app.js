@@ -10,7 +10,6 @@ let playerOneHand = []
 class Deck {
   constructor(){
     this.p1 = []
-    this.p1 = []
     this.dealer = []
     this.pullFrom = []
   }
@@ -35,6 +34,8 @@ let playerOneDeck = decks.p1
 const hitBtn = document.getElementById('hit-btn')
 const frontCard1 = document.getElementById('card-front1')
 const frontCard2 = document.getElementById('card-front2')
+const frontCard3 = document.getElementById('card-front3')
+const frontCard4 = document.getElementById('card-front4')
 
 
 
@@ -59,6 +60,7 @@ function handleClick() {
 function generateCard(){
   if (playerOneDeck.length === 52){
     hitBtn.disabled = true
+    console.log('STILL HITTING 52')
     return
   }
   suitIdx = Math.floor(Math.random() * suits.length)
@@ -68,28 +70,24 @@ function generateCard(){
   chosenCard = new Card(suitPicked, valuePicked)
   if (checkDecks(chosenCard)){
     generateCard()
-  }   else {
+  } else {
     playerOneDeck.push(chosenCard)
     chosenCard = new Card()
   }
 }
-const playerCard1 = playerOneDeck[0].combined
-const playerCard2 = playerOneDeck[1].combined
 
 
 function playerOneTurn(){
   if (playerOneHand.length < 2){
     generateCard()
-    generateCard()
-    return console.log(playerOneDeck)
   }
   
 }
 
 function checkDecks(card){
   let duplicate = false
-  playerOneDeck.forEach(function(obj){
-    if (obj.suit === card.suit && obj.value === card.value) {
+  playerOneDeck.forEach(function(pOneCard){
+    if (pOneCard.suit === card.suit && pOneCard.value === card.value) {
       duplicate = true
     }
   })
@@ -97,19 +95,22 @@ function checkDecks(card){
 }
 
 //? HOW TO MAKE THIS FUNCTION NEEDED? RE-WATCH OLD LECTURE
-  // Renders Turn of P1
-  function render(){
+// Renders Turn of P1
+  function render() {
+    frontCard3.style.display = 'none'
+    frontCard4.style.display = 'none'
+    frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[0].combined}.svg`)
+    frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[1].combined}.svg`)
+  
+    if (playerOneDeck[2]) {
+      frontCard3.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[2].combined}.svg`)
+    }
+  
+    if (playerOneDeck[3]) {
+      frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[3].combined}.svg`)
+    }
   }
   
-  console.log(decks.p1[0].combined) // <- Used to change SVG file
-  frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerCard1}.svg`)
-  frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerCard2}.svg`)
-
-
-
-
-
-
 
   //todo CREATE BET MECHANICS
   //todo CREATE PLAYER 1 FIRST TURN LOGIC

@@ -37,7 +37,7 @@ body {
   filter: drop-shadow(10px 10px 20px #575757);
 } */
 
-#card-front1, #card-front2 {
+#card-front1, #card-front2, #card-front3, #card-front4 {
   display: flexbox;
   height: 200px;
   position: relative;
@@ -48,7 +48,7 @@ body {
   padding: 5px;
   margin: 20px;
   border: none;
-  filter: drop-shadow(10px 10px 20px #575757);
+  filter: drop-shadow(10px 10px 10px #575757);
 }
 
 

@@ -96,3 +96,5 @@ GAME TURNS:
 also end game if P1 hand is revealed
 
 -------------------------------------------------------------------------------- */
+
+//! IF 5 OR MORE IN HAD, AUTOMATICALLY WIN, COLLECT BETS 2x AND CONTINUE NEXT TURN
