@@ -41,7 +41,7 @@ body {
   display: flex;
 }
 
-#card-front1, #card-front2, #card-front3, #card-front4 {
+#card-front0, #card-front1, #card-front2, #card-front3, #card-front4 {
   display: flex;
   height: 200px;
   flex-direction: row;

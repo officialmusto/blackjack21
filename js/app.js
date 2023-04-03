@@ -33,6 +33,7 @@ let playerOneHand = decks.p1
 const hitBtn = document.getElementById('hit-btn')
 const stayBtn = document.getElementById('stay-btn')
 
+const frontCard0 = document.getElementById('card-front0')
 const frontCard1 = document.getElementById('card-front1')
 const frontCard2 = document.getElementById('card-front2')
 const frontCard3 = document.getElementById('card-front3')
@@ -56,17 +57,19 @@ function init(){
 
 
 
-function handleClick() {
-  generateCard()
-  render()
-  console.log(playerOneHand)
-}
 
+function handleClick() {
+  if (playerOneHand.length < 5){
+    generateCard()
+    render()
+    addPlayerCards()
+  } else
+  hitBtn.disabled = true
+  return
+  
+}
 function generateCard(){
-  if (playerOneHand.length > 3){
-    hitBtn.disabled = true
-    return
-  }
+  
   suitIdx = Math.floor(Math.random() * suits.length)
   suitPicked = suits[suitIdx]
   valueIdx = Math.floor(Math.random() * values.length)
@@ -80,16 +83,44 @@ function generateCard(){
   }
 }
 
-
 function playerOneTurn(){
   if (playerOneHand.length < 2){
     generateCard()
-  } else if (playerOneHand.length > 4){
-    console.log('YOU WIN')
   }
-  
 }
+function addPlayerCards() {
+  let totalValue = 0
+  let acesCount = 0
 
+  for (let card of playerOneHand) {
+    if (card.value === 'A') {
+      acesCount++
+      totalValue += 11
+    } else if (['J', 'Q', 'K'].includes(card.value)) {
+      totalValue += 10
+    } else {
+      totalValue += parseInt(card.value)
+    }
+  }
+
+  // Adjust for aces
+  while (totalValue > 21 && acesCount > 0) {
+    totalValue -= 10
+    acesCount--
+  }
+
+  if (totalValue > 21) {
+    console.log('OVER 21')
+    hitBtn.disabled = true
+    return
+  } else if (totalValue === 21){
+    console.log('21 COUNT! YOU WIN')
+    return hitBtn.disabled = true
+  } else if (totalValue < 21 && playerOneHand.length === 5){
+    console.log('OVER 5 - YOU WIN')
+    return hitBtn.disabled = true
+  }
+}
 function checkDecks(card){
   let duplicate = false
   playerOneHand.forEach(function(pOneCard){
@@ -99,29 +130,34 @@ function checkDecks(card){
   })
   return duplicate
 }
-
 // Renders Turn of P1
   function render() {
+    frontCard0.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[0].combined}.svg`)
+    frontCard1.style.display = 'none'
     frontCard2.style.display = 'none'
     frontCard3.style.display = 'none'
     frontCard4.style.display = 'none'
-
-    frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[0].combined}.svg`)
+    
   
     if (playerOneHand[1]) {
-      frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[1].combined}.svg`)
-      frontCard2.style.display = 'block'
+      frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[1].combined}.svg`)
+      frontCard1.style.display = 'block'
     }
     if (playerOneHand[2]) {
-      frontCard3.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[2].combined}.svg`)
+      frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[2].combined}.svg`)
+      frontCard2.style.display = 'block'
+    }
+    if (playerOneHand[3]) {
+      frontCard3.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[3].combined}.svg`)
       frontCard3.style.display = 'block'
     }
-  
-    if (playerOneHand[3]) {
-      frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[3].combined}.svg`)
+    if (playerOneHand[4]) {
+      frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[4].combined}.svg`)
       frontCard4.style.display = 'block'
     }
+    console.log(playerOneHand)
   }
+
   
 
   //todo CREATE BET MECHANICS
