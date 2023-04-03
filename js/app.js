@@ -1,10 +1,9 @@
+
 /* ------------------- VARIABLES ------------------- */
 
 // Separating the Card by their suit & value.
 const suits = ['s','h', 'c', 'd'] // Spades, Hearts, Clubs, Diamonds
 const values = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K']
-
-let playerOneHand = []
 
 // Establishing Deck Class to handle p1 deck, dealer deck, player deck, and the sorted deck.
 class Deck {
@@ -29,9 +28,11 @@ class Card{
 
 // Created a variable to utilize the '.push()' method and push the selected card into the dispose pile.
 let decks = new Deck()
-let playerOneDeck = decks.p1
+let playerOneHand = decks.p1
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
+const stayBtn = document.getElementById('stay-btn')
+
 const frontCard1 = document.getElementById('card-front1')
 const frontCard2 = document.getElementById('card-front2')
 const frontCard3 = document.getElementById('card-front3')
@@ -41,11 +42,11 @@ const frontCard4 = document.getElementById('card-front4')
 
 /* ------------------- EVENT LISTENERS ------------------- */
 hitBtn.addEventListener('click', handleClick)
-
+stayBtn.addEventListener('click', handleClick)
 
 
 /* ------------------- FUNCTIONS ------------------- */
-
+// GAME INITIALIZER
 init()
 
 function init(){
@@ -53,15 +54,17 @@ function init(){
   render()
 }
 
+
+
 function handleClick() {
   generateCard()
   render()
+  console.log(playerOneHand)
 }
 
 function generateCard(){
-  if (playerOneDeck.length === 52){
+  if (playerOneHand.length > 3){
     hitBtn.disabled = true
-    console.log('STILL HITTING 52')
     return
   }
   suitIdx = Math.floor(Math.random() * suits.length)
@@ -72,7 +75,7 @@ function generateCard(){
   if (checkDecks(chosenCard)){
     generateCard()
   } else {
-    playerOneDeck.push(chosenCard)
+    playerOneHand.push(chosenCard)
     chosenCard = new Card()
   }
 }
@@ -89,7 +92,7 @@ function playerOneTurn(){
 
 function checkDecks(card){
   let duplicate = false
-  playerOneDeck.forEach(function(pOneCard){
+  playerOneHand.forEach(function(pOneCard){
     if (pOneCard.suit === card.suit && pOneCard.value === card.value) {
       duplicate = true
     }
@@ -97,26 +100,25 @@ function checkDecks(card){
   return duplicate
 }
 
-//? HOW TO MAKE THIS FUNCTION NEEDED? RE-WATCH OLD LECTURE
 // Renders Turn of P1
   function render() {
     frontCard2.style.display = 'none'
     frontCard3.style.display = 'none'
     frontCard4.style.display = 'none'
 
-    frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[0].combined}.svg`)
+    frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[0].combined}.svg`)
   
-    if (playerOneDeck[1]) {
-      frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[1].combined}.svg`)
+    if (playerOneHand[1]) {
+      frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[1].combined}.svg`)
       frontCard2.style.display = 'block'
     }
-    if (playerOneDeck[2]) {
-      frontCard3.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[2].combined}.svg`)
+    if (playerOneHand[2]) {
+      frontCard3.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[2].combined}.svg`)
       frontCard3.style.display = 'block'
     }
   
-    if (playerOneDeck[3]) {
-      frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneDeck[3].combined}.svg`)
+    if (playerOneHand[3]) {
+      frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[3].combined}.svg`)
       frontCard4.style.display = 'block'
     }
   }
