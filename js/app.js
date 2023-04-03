@@ -6,10 +6,10 @@ const values = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 
 
 let playerOneHand = []
 
-// Establishing Deck Class to handle disposed deck, dealer deck, player deck, and the sorted deck.
+// Establishing Deck Class to handle p1 deck, dealer deck, player deck, and the sorted deck.
 class Deck {
   constructor(){
-    this.disposed = []
+    this.p1 = []
     this.p1 = []
     this.dealer = []
     this.pullFrom = []
@@ -30,10 +30,11 @@ class Card{
 
 // Created a variable to utilize the '.push()' method and push the selected card into the dispose pile.
 let decks = new Deck()
-let disposedDeck = decks.disposed
+let playerOneDeck = decks.p1
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
-const frontCard = document.getElementById('card-front')
+const frontCard1 = document.getElementById('card-front1')
+const frontCard2 = document.getElementById('card-front2')
 
 
 
@@ -56,7 +57,7 @@ function handleClick() {
 }
 
 function generateCard(){
-  if (disposedDeck.length === 52){
+  if (playerOneDeck.length === 52){
     hitBtn.disabled = true
     return
   }
@@ -66,24 +67,28 @@ function generateCard(){
   valuePicked = values[valueIdx]
   chosenCard = new Card(suitPicked, valuePicked)
   if (checkDecks(chosenCard)){
-  generateCard()
-}   else {
-  disposedDeck.push(chosenCard)
-  chosenCard = new Card()
+    generateCard()
+  }   else {
+    playerOneDeck.push(chosenCard)
+    chosenCard = new Card()
+  }
 }
-}
+const playerCard1 = playerOneDeck[0].combined
+const playerCard2 = playerOneDeck[1].combined
+
 
 function playerOneTurn(){
   if (playerOneHand.length < 2){
     generateCard()
     generateCard()
-    return console.log(disposedDeck)
+    return console.log(playerOneDeck)
   }
+  
 }
 
 function checkDecks(card){
   let duplicate = false
-  disposedDeck.forEach(function(obj){
+  playerOneDeck.forEach(function(obj){
     if (obj.suit === card.suit && obj.value === card.value) {
       duplicate = true
     }
@@ -96,8 +101,9 @@ function checkDecks(card){
   function render(){
   }
   
-  console.log(decks.disposed[0].combined) // <- Used to change SVG file
-  
+  console.log(decks.p1[0].combined) // <- Used to change SVG file
+  frontCard1.setAttribute('src', `assets/SVGs/front-of-cards/${playerCard1}.svg`)
+  frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${playerCard2}.svg`)
 
 
 

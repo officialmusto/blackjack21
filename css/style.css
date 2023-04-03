@@ -22,7 +22,7 @@ body {
   filter: drop-shadow(5px 5px 5px #4b4b4b);
 }
 
-.back-of-cards {
+/* .back-of-cards {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
@@ -33,21 +33,31 @@ body {
 }
 
 #back-red, #back-blue {
+  border: none;`
+  filter: drop-shadow(10px 10px 20px #575757);
+} */
+
+#card-front1, #card-front2 {
+  display: flexbox;
+  height: 200px;
+  position: relative;
+  top: 20rem;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  margin: 20px;
   border: none;
   filter: drop-shadow(10px 10px 20px #575757);
 }
 
-#card-front {
-  display: flex;
-  height: 200px;
-
-}
 
 div > button {
   align-content: center;
   border: none;
   border-radius: 15px;
   font-size: x-large;
+  align-items: center;
   color:#c59963;
   font-family: 'Josefin Sans', sans-serif;
   height: 50px;
@@ -71,9 +81,9 @@ div > button {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  position: relative;
+  position: absolute;
   margin: 10px;
-  top: 30rem;
+  top: 40rem;
   height: 80px;
   width: 700px;
   filter: drop-shadow(5px 5px 5px #878787);
