@@ -33,13 +33,16 @@ let playerOneHand = decks.p1
 const hitBtn = document.getElementById('hit-btn')
 const stayBtn = document.getElementById('stay-btn')
 const betBtn = document.getElementById('bet-btn')
+const resetBtn = document.getElementById('reset')
 const betSlider = document.getElementById('bet-slider')
+const finalMessage = document.getElementById('final-message')
 
 const frontCard0 = document.getElementById('card-front0')
 const frontCard1 = document.getElementById('card-front1')
 const frontCard2 = document.getElementById('card-front2')
 const frontCard3 = document.getElementById('card-front3')
 const frontCard4 = document.getElementById('card-front4')
+const frontOfCards = document.querySelectorAll('.front-of-cards')
 
 
 
@@ -55,7 +58,7 @@ betBtn.addEventListener('click', toggleSlider)
 init()
 
 function init(){
-  betSlider.style.display = 'none'
+  toggleSlider()
   playerOneTurn()
   render()
 }
@@ -65,7 +68,6 @@ function handleClick() {
     generateCard()
     render()
     addPlayerCards()
-    // betSlider()
   } else
   hitBtn.disabled = true
   return
@@ -111,16 +113,27 @@ function addPlayerCards() {
     totalValue -= 10
     acesCount--
   }
+
   
   if (totalValue > 21) {
-    console.log('OVER 21')
+    blurFrontOfCards()
+    betSlider.style.display = 'block'
+    finalMessage.style.color = 'red'
+    resetBtn.style.display = 'block'
+    finalMessage.innerText = 'Lost your bet, try again?'
     hitBtn.disabled = true
     return
   } else if (totalValue === 21){
-    console.log('21 COUNT! YOU WIN')
+    blurFrontOfCards()
+    resetBtn.style.display = 'block'
+    finalMessage.style.color = 'green'
+    finalMessage.innerText = '21 COUNT! YOU WIN'
     return hitBtn.disabled = true
   } else if (totalValue < 21 && playerOneHand.length === 5){
-    console.log('OVER 5, BUT UNDER 21 - YOU WIN')
+    blurFrontOfCards()
+    resetBtn.style.display = 'block'
+    finalMessage.style.color = 'green'
+    finalMessage.innerText = 'OVER 5, BUT UNDER 21 - YOU WIN'
     return hitBtn.disabled = true
   }
 }
@@ -142,13 +155,19 @@ function toggleSlider() {
   }
 }
 
+function blurFrontOfCards() {
+  frontOfCards.forEach(card => {
+    card.style.filter = 'blur(20px)' // Adjust the blur value as needed (e.g., 'blur(3px)', 'blur(8px)', etc.)
+  })
+}
 
 
 function stayLogic(){
-
+  finalMessage.innerText = 'BUTTON PRESSED!'
 }
 // Renders Turn of P1
 function render() {
+  resetBtn.style.display = 'none'
   frontCard0.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[0].combined}.svg`)
   frontCard1.style.display = 'none'
     frontCard2.style.display = 'none'
@@ -172,7 +191,6 @@ function render() {
       frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[4].combined}.svg`)
       frontCard4.style.display = 'block'
     }
-    console.log(playerOneHand)
   }
 
   

@@ -75,22 +75,21 @@ body {
   padding: 20px;
 }
 
-div > button {
+div > #bet-btn, #stay-btn, #hit-btn {
   align-content: center;
   border: none;
   border-radius: 15px;
   font-size: x-large;
   align-items: center;
-  color:#c59963;
   font-family: 'Josefin Sans', sans-serif;
   height: 50px;
   width: 150px;
   background-color: #ffe4c4;
 }
-
 #bet-btn {
   color: rgb(28, 149, 28);
 }
+
 #stay-btn{
   color: rgb(204, 30, 30);
 }
@@ -112,11 +111,33 @@ div > button {
   filter: drop-shadow(5px 5px 5px #878787);
 }
 
+.outcome-message{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  top: 20rem;
+  font-size: 50px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 div > h1 {
-  display: flexbox;
+  display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  color: black;
+}
 
-  color: red;
+#reset {
+  display: flexbox;
+  position: absolute;
+  border: none;
+  border-radius: 15px;
+  font-size: x-large;
+  color:#c59963;
+  font-family: 'Josefin Sans', sans-serif;
+  height: 50px;
+  width: 150px;
+  top: 15rem;
+  background-color: #ffe4c4;
+  filter: drop-shadow(5px 5px 5px #878787);
 }
