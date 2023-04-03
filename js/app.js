@@ -32,6 +32,8 @@ let playerOneHand = decks.p1
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
 const stayBtn = document.getElementById('stay-btn')
+const betBtn = document.getElementById('bet-btn')
+const betSlider = document.getElementById('bet-slider')
 
 const frontCard0 = document.getElementById('card-front0')
 const frontCard1 = document.getElementById('card-front1')
@@ -43,7 +45,9 @@ const frontCard4 = document.getElementById('card-front4')
 
 /* ------------------- EVENT LISTENERS ------------------- */
 hitBtn.addEventListener('click', handleClick)
-stayBtn.addEventListener('click', handleClick)
+stayBtn.addEventListener('click', stayLogic)
+betBtn.addEventListener('click', toggleSlider)
+
 
 
 /* ------------------- FUNCTIONS ------------------- */
@@ -51,18 +55,17 @@ stayBtn.addEventListener('click', handleClick)
 init()
 
 function init(){
+  betSlider.style.display = 'none'
   playerOneTurn()
   render()
 }
-
-
-
 
 function handleClick() {
   if (playerOneHand.length < 5){
     generateCard()
     render()
     addPlayerCards()
+    // betSlider()
   } else
   hitBtn.disabled = true
   return
@@ -91,7 +94,7 @@ function playerOneTurn(){
 function addPlayerCards() {
   let totalValue = 0
   let acesCount = 0
-
+  
   for (let card of playerOneHand) {
     if (card.value === 'A') {
       acesCount++
@@ -102,13 +105,13 @@ function addPlayerCards() {
       totalValue += parseInt(card.value)
     }
   }
-
+  
   // Adjust for aces
   while (totalValue > 21 && acesCount > 0) {
     totalValue -= 10
     acesCount--
   }
-
+  
   if (totalValue > 21) {
     console.log('OVER 21')
     hitBtn.disabled = true
@@ -117,7 +120,7 @@ function addPlayerCards() {
     console.log('21 COUNT! YOU WIN')
     return hitBtn.disabled = true
   } else if (totalValue < 21 && playerOneHand.length === 5){
-    console.log('OVER 5 - YOU WIN')
+    console.log('OVER 5, BUT UNDER 21 - YOU WIN')
     return hitBtn.disabled = true
   }
 }
@@ -130,10 +133,24 @@ function checkDecks(card){
   })
   return duplicate
 }
+
+function toggleSlider() {
+  if (betSlider.style.display === 'none') {
+    betSlider.style.display = 'block'
+  } else {
+    betSlider.style.display = 'none'
+  }
+}
+
+
+
+function stayLogic(){
+
+}
 // Renders Turn of P1
-  function render() {
-    frontCard0.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[0].combined}.svg`)
-    frontCard1.style.display = 'none'
+function render() {
+  frontCard0.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[0].combined}.svg`)
+  frontCard1.style.display = 'none'
     frontCard2.style.display = 'none'
     frontCard3.style.display = 'none'
     frontCard4.style.display = 'none'

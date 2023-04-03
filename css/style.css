@@ -56,6 +56,24 @@ body {
   filter: drop-shadow(10px 10px 10px #575757);
 }
 
+.bet-input {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  top: 45rem;
+}
+
+.bet-input input {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  top: 40rem;
+  height: 40px;
+  width: 150px;
+  font-size: 30px;
+  padding: 20px;
+}
 
 div > button {
   align-content: center;
