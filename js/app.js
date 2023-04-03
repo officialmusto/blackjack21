@@ -1,8 +1,8 @@
 /* ------------------- VARIABLES ------------------- */
 
 // Separating the Card by their suit & value.
-const suits = ['♠','♥', '♣', '♦']
-const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+const suits = ['s','h', 'c', 'd'] // Spades, Hearts, Clubs, Diamonds
+const values = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K']
 
 let playerOneHand = []
 
@@ -22,6 +22,7 @@ class Card{
   constructor(suit, value){
     this.suit = suit
     this.value = value
+    this.combined = suit + value
   }
 }
 
@@ -32,7 +33,7 @@ let decks = new Deck()
 let disposedDeck = decks.disposed
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
-
+const frontCard = document.getElementById('card-front')
 
 
 
@@ -46,7 +47,7 @@ hitBtn.addEventListener('click', handleClick)
 init()
 
 function init(){
-  
+  playerOneTurn()
 }
 
 function handleClick() {
@@ -73,7 +74,11 @@ function generateCard(){
 }
 
 function playerOneTurn(){
-
+  if (playerOneHand.length < 2){
+    generateCard()
+    generateCard()
+    return console.log(disposedDeck)
+  }
 }
 
 function checkDecks(card){
@@ -89,11 +94,10 @@ function checkDecks(card){
 //? HOW TO MAKE THIS FUNCTION NEEDED? RE-WATCH OLD LECTURE
   // Renders Turn of P1
   function render(){
-    console.log(disposedDeck)
   }
-
   
-
+  console.log(decks.disposed[0].combined) // <- Used to change SVG file
+  
 
 
 
