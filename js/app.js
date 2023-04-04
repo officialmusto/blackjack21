@@ -140,9 +140,7 @@ function addPlayerCards() {
     totalValue -= 10
     acesCount--
   }
-  if (totalValue < dealerHandValue){
-
-  }
+  
   if (totalValue > 21) {
     hitBtn.disabled = true
     setTimeout(function(){
@@ -248,14 +246,12 @@ function blurFrontOfCards() {
 }
 
 function stayLogic() {
-  determineWinner()
+  playDealerHand()
   finalMessage.innerText = 'BUTTON PRESSED!' // <-- TESTER
 }
 
 function determineWinner(){
-  dealerHand.forEach(function(card){
-
-  })
+  
 }
 
 
