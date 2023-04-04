@@ -27,7 +27,7 @@ class Deck {
 let decks = new Deck()
 let playerOneHand = decks.p1
 let shuffledDeck = decks.shuffled
-
+let dealerHand = decks.dealer
 
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
@@ -75,6 +75,7 @@ function init() {
     render()
     addPlayerCards()
     playerOneTurn()
+    dealerTurn()
     createFullDeck()
   } else {
     hitBtn.disabled = true
@@ -112,6 +113,11 @@ function playerOneTurn() {
   render()
   addPlayerCards()
 }
+function dealerTurn() {
+  dealerHand.push(shuffledDeck.pop(), shuffledDeck.pop())
+  render()
+  addPlayerCards()
+}
 console.log(shuffledDeck)
 
 
@@ -134,7 +140,9 @@ function addPlayerCards() {
     totalValue -= 10
     acesCount--
   }
-  
+  if (totalValue < dealerHandValue){
+
+  }
   if (totalValue > 21) {
     hitBtn.disabled = true
     setTimeout(function(){
@@ -157,7 +165,7 @@ function addPlayerCards() {
     finalMessage.innerText = `21 COUNT! YOU WIN \nTOTAL : ${totalValue}`
     return
     }, 2000)
-  } else if (totalValue < 21 && shuffledDeck.length === 5) {
+  } else if (totalValue < 21 && playerOneHand.length === 5) {
     hitBtn.disabled = true
     setTimeout(function(){
     blurFrontOfCards()
@@ -177,7 +185,7 @@ function playDealerHand() {
   let i = 0
   
   // Calculate the dealer's current hand value
-  for (let card of dealer) {
+  for (let card of dealerHand) {
     if (card.value === 'A') {
       acesCount++
       dealerHandValue += 11
@@ -196,15 +204,15 @@ function playDealerHand() {
   
   // Draw cards until the dealer's hand value is at least 17
   while (dealerHandValue < 17) {
-    dealer.push(shuffledDeck.pop())
+    dealerHand.push(shuffledDeck.pop())
     i++
-    if (dealer[i].value === 'A') {
+    if (dealerHand[i].value === 'A') {
       acesCount++
       dealerHandValue += 11
-    } else if (['J', 'Q', 'K'].includes(dealer[i].value)) {
+    } else if (['J', 'Q', 'K'].includes(dealerHand[i].value)) {
       dealerHandValue += 10
     } else {
-      dealerHandValue += parseInt(dealer[i].value)
+      dealerHandValue += parseInt(dealerHand[i].value)
     }
     // Adjust for aces
     while (dealerHandValue > 21 && acesCount > 0) {
@@ -240,8 +248,16 @@ function blurFrontOfCards() {
 }
 
 function stayLogic() {
+  determineWinner()
   finalMessage.innerText = 'BUTTON PRESSED!' // <-- TESTER
 }
+
+function determineWinner(){
+  dealerHand.forEach(function(card){
+
+  })
+}
+
 
 function resetGame() {
   shuffledDeck.length = 0
