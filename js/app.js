@@ -136,30 +136,38 @@ function addPlayerCards() {
   }
   
   if (totalValue > 21) {
+    hitBtn.disabled = true
+    setTimeout(function(){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     betSlider.style.display = 'none'
     betBtn.style.display = 'none'
     finalMessage.style.color = '#cc1e1e'
     finalMessage.innerText = `Lost your bet, try again? \nTOTAL : ${totalValue}`
-    hitBtn.disabled = true
     return
+    }, 2000)
   } else if (totalValue === 21) {
+    hitBtn.disabled = true
+    setTimeout(function(){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     betSlider.style.display = 'none'
     betBtn.style.display = 'none'
     finalMessage.style.color = 'green'
     finalMessage.innerText = `21 COUNT! YOU WIN \nTOTAL : ${totalValue}`
-    return hitBtn.disabled = true
+    return
+    }, 2000)
   } else if (totalValue < 21 && shuffledDeck.length === 5) {
+    hitBtn.disabled = true
+    setTimeout(function(){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     betSlider.style.display = 'none'
     betBtn.style.display = 'none'
     finalMessage.style.color = 'green'
     finalMessage.innerText = `OVER 5 CARDS, BUT UNDER 21 - YOU WIN \nTOTAL : ${totalValue}`
-    return hitBtn.disabled = true
+    return
+    }, 2000)
   }
 }
 
