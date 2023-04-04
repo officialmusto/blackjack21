@@ -1,5 +1,4 @@
 /* ------------------- VARIABLES ------------------- */
-//! 'git' SHOWS IN CONSOLE, WHY?
 // Separating the Card by their suit & value.
 const suits = ['s', 'h', 'c', 'd'] // Spades, Hearts, Clubs, Diamonds
 const values = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K']
@@ -181,7 +180,11 @@ function playDealerHand() {
   let dealerHandValue = 0
   let acesCount = 0
   let i = 0
-  
+
+  // Draw cards until the dealer's hand value is at least 17
+  while (dealerHandValue < 17) {
+    dealerHand.push(shuffledDeck.pop())
+    i++
   // Calculate the dealer's current hand value
   for (let card of dealerHand) {
     if (card.value === 'A') {
@@ -193,31 +196,13 @@ function playDealerHand() {
       dealerHandValue += parseInt(card.value)
     }
   }
-  
   // Adjust for aces
   while (dealerHandValue > 21 && acesCount > 0) {
     dealerHandValue -= 10
     acesCount--
   }
-  
-  // Draw cards until the dealer's hand value is at least 17
-  while (dealerHandValue < 17) {
-    dealerHand.push(shuffledDeck.pop())
-    i++
-    if (dealerHand[i].value === 'A') {
-      acesCount++
-      dealerHandValue += 11
-    } else if (['J', 'Q', 'K'].includes(dealerHand[i].value)) {
-      dealerHandValue += 10
-    } else {
-      dealerHandValue += parseInt(dealerHand[i].value)
-    }
-    // Adjust for aces
-    while (dealerHandValue > 21 && acesCount > 0) {
-      dealerHandValue -= 10
-      acesCount--
-    }
   }
+  return console.log(dealerHandValue)
 }
 
 
@@ -246,7 +231,9 @@ function blurFrontOfCards() {
 }
 
 function stayLogic() {
+  stayBtn.disabled = true
   playDealerHand()
+  addPlayerCards()
   finalMessage.innerText = 'BUTTON PRESSED!' // <-- TESTER
 }
 
@@ -296,24 +283,3 @@ function playerOneCards() {
     frontCard4.style.display = 'block'
   }
 }
-
-
-// Create a function to generate a complete deck of cards (52 unique cards), then shuffle it.
-
-// Instead of generating a random card in the generateCard() function, draw a card from the shuffled deck and remove it from the deck to prevent duplicates.
-
-// Create functions to handle the dealer's logic
-//    a. Automatically draw cards until the dealer's hand value is at least 17.
-//    b. Determine the winner based on the player's and dealer's hand values.
-
-// Enhance the init() function to deal two initial cards for both the player and the dealer.
-
-// Add functionality to the 'Stay' button to trigger the dealer's turn and the end of the game.
-
-// Implement betting mechanics to allow players to place bets before each round.
-
-// Optimize the render function to handle both player and dealer cards, and consider hiding one of the dealer's cards until the end of the round.
-
-// Add game state tracking to manage different stages of the game, such as betting, playing, dealer's turn, and determining the winner.
-
-// Include any additional rules or features to implement, such as splitting, doubling down, or insurance.
