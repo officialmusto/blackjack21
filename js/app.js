@@ -219,7 +219,9 @@ function playerOneCards(){
     }
 }
 
-generateDeck(shuffledDeck)
+function generateDeck(shuffledDeck){
+
+}
 
   // Create a function to generate a complete deck of cards (52 unique cards), then shuffle it.
 
@@ -239,4 +241,4 @@ generateDeck(shuffledDeck)
   
   // Add game state tracking to manage different stages of the game, such as betting, playing, dealer's turn, and determining the winner.
   
-  // Include any additional rules or features you would like to implement, such as splitting, doubling down, or insurance.
+  // Include any additional rules or features to implement, such as splitting, doubling down, or insurance.
