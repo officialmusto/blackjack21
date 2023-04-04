@@ -1,5 +1,5 @@
 /* ------------------- VARIABLES ------------------- */
-
+//! 'git' SHOWS IN CONSOLE, WHY?
 // Separating the Card by their suit & value.
 const suits = ['s', 'h', 'c', 'd'] // Spades, Hearts, Clubs, Diamonds
 const values = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K']
@@ -44,6 +44,10 @@ const frontCard3 = document.getElementById('card-front3')
 const frontCard4 = document.getElementById('card-front4')
 const frontOfCards = document.querySelectorAll('.front-of-cards')
 
+const dealerCard0 = document.getElementById('dealer-card0')
+const dealerCard1 = document.getElementById('dealer-card1')
+
+
 /* ------------------- EVENT LISTENERS ------------------- */
 hitBtn.addEventListener('click', handleClick)
 stayBtn.addEventListener('click', stayLogic)
@@ -65,6 +69,7 @@ function createFullDeck() {
 }
 
 function init() {
+  betSlider.style.display = 'none'
   if (shuffledDeck.length < 1) {
     generateCard()
     render()
@@ -158,6 +163,50 @@ function addPlayerCards() {
   }
 }
 
+function playDealerHand() {
+  let dealerHandValue = 0
+  let acesCount = 0
+  let i = 0
+  
+  // Calculate the dealer's current hand value
+  for (let card of dealer) {
+    if (card.value === 'A') {
+      acesCount++
+      dealerHandValue += 11
+    } else if (['J', 'Q', 'K'].includes(card.value)) {
+      dealerHandValue += 10
+    } else {
+      dealerHandValue += parseInt(card.value)
+    }
+  }
+  
+  // Adjust for aces
+  while (dealerHandValue > 21 && acesCount > 0) {
+    dealerHandValue -= 10
+    acesCount--
+  }
+  
+  // Draw cards until the dealer's hand value is at least 17
+  while (dealerHandValue < 17) {
+    dealer.push(shuffledDeck.pop())
+    i++
+    if (dealer[i].value === 'A') {
+      acesCount++
+      dealerHandValue += 11
+    } else if (['J', 'Q', 'K'].includes(dealer[i].value)) {
+      dealerHandValue += 10
+    } else {
+      dealerHandValue += parseInt(dealer[i].value)
+    }
+    // Adjust for aces
+    while (dealerHandValue > 21 && acesCount > 0) {
+      dealerHandValue -= 10
+      acesCount--
+    }
+  }
+}
+
+
 function checkDecks(card) {
   let duplicate = false
   shuffledDeck.forEach(function(pOneCard) {
@@ -183,7 +232,7 @@ function blurFrontOfCards() {
 }
 
 function stayLogic() {
-  finalMessage.innerText = 'BUTTON PRESSED!'
+  finalMessage.innerText = 'BUTTON PRESSED!' // <-- TESTER
 }
 
 function resetGame() {
