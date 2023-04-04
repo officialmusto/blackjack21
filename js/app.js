@@ -120,21 +120,23 @@ function addPlayerCards() {
   
   if (totalValue > 21) {
     blurFrontOfCards()
-    betSlider.style.display = 'block'
-    finalMessage.style.color = '#cc1e1e'
     resetBtn.style.display = 'block'
+    betSlider.style.display = 'none'
+    finalMessage.style.color = '#cc1e1e'
     finalMessage.innerText = `Lost your bet, try again? \nTOTAL: ${totalValue}`
     hitBtn.disabled = true
     return
   } else if (totalValue === 21){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
+    betSlider.style.display = 'none'
     finalMessage.style.color = 'green'
     finalMessage.innerText = `21 COUNT! YOU WIN \nTOTAL: ${totalValue}`
     return hitBtn.disabled = true
   } else if (totalValue < 21 && playerOneHand.length === 5){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
+    betSlider.style.display = 'none'
     finalMessage.style.color = 'green'
     finalMessage.innerText = `OVER 5, BUT UNDER 21 - YOU WIN \nTOTAL: ${totalValue}`
     return hitBtn.disabled = true
@@ -212,6 +214,8 @@ function playerOneCards(){
       frontCard4.style.display = 'block'
     }
 }
+
+generateDeck(shuffledDeck)
 
   // Create a function to generate a complete deck of cards (52 unique cards), then shuffle it.
 

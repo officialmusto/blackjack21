@@ -118,6 +118,7 @@ div > #bet-btn, #stay-btn, #hit-btn {
   top: 20rem;
   font-size: 50px;
   font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
 }
 
 div > h1 {
@@ -129,16 +130,16 @@ div > h1 {
 }
 
 #reset {
-  display: flexbox;
+  display: flex;
   position: absolute;
   border: none;
   border-radius: 15px;
-  font-size: x-large;
+  font-size: xx-large;
   color:#c59963;
   font-family: 'Josefin Sans', sans-serif;
-  height: 50px;
-  width: 150px;
-  top: 15rem;
+  height: 80px;
+  width: 180px;
+  top: 18rem;
   background-color: #ffe4c4;
   filter: drop-shadow(5px 5px 5px #878787);
 }
