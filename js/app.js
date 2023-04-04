@@ -122,23 +122,26 @@ function addPlayerCards() {
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     betSlider.style.display = 'none'
+    betBtn.style.display = 'none'
     finalMessage.style.color = '#cc1e1e'
-    finalMessage.innerText = `Lost your bet, try again? \nTOTAL: ${totalValue}`
+    finalMessage.innerText = `Lost your bet, try again? \nTOTAL : ${totalValue}`
     hitBtn.disabled = true
     return
   } else if (totalValue === 21){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     betSlider.style.display = 'none'
+    betBtn.style.display = 'none'
     finalMessage.style.color = 'green'
-    finalMessage.innerText = `21 COUNT! YOU WIN \nTOTAL: ${totalValue}`
+    finalMessage.innerText = `21 COUNT! YOU WIN \nTOTAL : ${totalValue}`
     return hitBtn.disabled = true
   } else if (totalValue < 21 && playerOneHand.length === 5){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     betSlider.style.display = 'none'
+    betBtn.style.display = 'none'
     finalMessage.style.color = 'green'
-    finalMessage.innerText = `OVER 5, BUT UNDER 21 - YOU WIN \nTOTAL: ${totalValue}`
+    finalMessage.innerText = `OVER 5, BUT UNDER 21 - YOU WIN \nTOTAL : ${totalValue}`
     return hitBtn.disabled = true
   }
 }
@@ -186,6 +189,7 @@ function resetGame() {
 // Renders Turn of P1
 function render() {
   resetBtn.style.display = 'none'
+  betBtn.style.display = 'block'
   playerOneCards()
   }
 
