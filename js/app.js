@@ -29,6 +29,7 @@ class Card{
 // Created a variable to utilize the '.push()' method and push the selected card into the dispose pile.
 let decks = new Deck()
 let playerOneHand = decks.p1
+let shuffledDeck = decks.pullFrom
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
 const stayBtn = document.getElementById('stay-btn')
@@ -141,7 +142,7 @@ function addPlayerCards() {
     betSlider.style.display = 'none'
     betBtn.style.display = 'none'
     finalMessage.style.color = 'green'
-    finalMessage.innerText = `OVER 5, BUT UNDER 21 - YOU WIN \nTOTAL : ${totalValue}`
+    finalMessage.innerText = `OVER 5 CARDS, BUT UNDER 21 - YOU WIN \nTOTAL : ${totalValue}`
     return hitBtn.disabled = true
   }
 }
@@ -219,8 +220,10 @@ function playerOneCards(){
     }
 }
 
-function generateDeck(shuffledDeck){
-
+function generateNewDeck(){
+  playerOneHand.forEach(function(chosenCard){
+    
+  })
 }
 
   // Create a function to generate a complete deck of cards (52 unique cards), then shuffle it.
