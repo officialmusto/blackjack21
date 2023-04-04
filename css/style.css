@@ -91,7 +91,7 @@ div > #bet-btn, #stay-btn, #hit-btn {
 }
 
 #stay-btn{
-  color: rgb(204, 30, 30);
+  color: #cc1e1e;
 }
 
 #hit-btn{
@@ -141,4 +141,25 @@ div > h1 {
   top: 15rem;
   background-color: #ffe4c4;
   filter: drop-shadow(5px 5px 5px #878787);
+}
+
+.animate-blur {
+  transition: filter 0.5 ease-in-out;
+}
+#bet-slider {
+  -webkit-appearance: none;
+  height: .0px;
+  width: 150px;
+  background-color: green;
+  border-radius: 20px;
+  outline: none;
+  filter: drop-shadow(5px 5px 5px #878787);
+}
+#bet-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #ff0000; /* Change to your desired color */
+  border-radius: 35%;
+  cursor: pointer;
 }

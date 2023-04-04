@@ -62,7 +62,9 @@ function init(){
   playerOneTurn()
   render()
   betSlider.style.display = 'none'
+  frontOfCards.forEach(card => card.classList.add('animate-blur'));
 }
+
 
 function handleClick() {
   if (playerOneHand.length < 5){
@@ -119,7 +121,7 @@ function addPlayerCards() {
   if (totalValue > 21) {
     blurFrontOfCards()
     betSlider.style.display = 'block'
-    finalMessage.style.color = 'red'
+    finalMessage.style.color = '#cc1e1e'
     resetBtn.style.display = 'block'
     finalMessage.innerText = `Lost your bet, try again? \nTOTAL: ${totalValue}`
     hitBtn.disabled = true
@@ -134,7 +136,7 @@ function addPlayerCards() {
     blurFrontOfCards()
     resetBtn.style.display = 'block'
     finalMessage.style.color = 'green'
-    finalMessage.innerText = `VER 5, BUT UNDER 21 - YOU WIN \nTOTAL: ${totalValue}`
+    finalMessage.innerText = `OVER 5, BUT UNDER 21 - YOU WIN \nTOTAL: ${totalValue}`
     return hitBtn.disabled = true
   }
 }
@@ -182,6 +184,10 @@ function resetGame() {
 // Renders Turn of P1
 function render() {
   resetBtn.style.display = 'none'
+  playerOneCards()
+  }
+
+function playerOneCards(){
   frontCard0.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[0].combined}.svg`)
   frontCard1.style.display = 'none'
     frontCard2.style.display = 'none'
@@ -205,13 +211,24 @@ function render() {
       frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[4].combined}.svg`)
       frontCard4.style.display = 'block'
     }
-  }
+}
 
-  
+  // Create a function to generate a complete deck of cards (52 unique cards), then shuffle it.
 
-  //todo CREATE BET MECHANICS
-  //todo CREATE PLAYER 1 FIRST TURN LOGIC
-  //todo CREATE DEALER TURN LOGIC
-  //todo CREATE TURN LOGIC
-  //todo CREATE CARD FLIPS, CARD DISPOSING, AND DECK MECHANICS
+  // Instead of generating a random card in the generateCard() function, draw a card from the shuffled deck and remove it from the deck to prevent duplicates.
   
+  // Create functions to handle the dealer's logic
+  //    a. Automatically draw cards until the dealer's hand value is at least 17.
+  //    b. Determine the winner based on the player's and dealer's hand values.
+  
+  // Enhance the init() function to deal two initial cards for both the player and the dealer.
+
+  // Add functionality to the 'Stay' button to trigger the dealer's turn and the end of the game.
+
+  // Implement betting mechanics to allow players to place bets before each round.
+
+  // Optimize the render function to handle both player and dealer cards, and consider hiding one of the dealer's cards until the end of the round.
+  
+  // Add game state tracking to manage different stages of the game, such as betting, playing, dealer's turn, and determining the winner.
+  
+  // Include any additional rules or features you would like to implement, such as splitting, doubling down, or insurance.
