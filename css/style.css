@@ -1,13 +1,12 @@
-html {
-  height: 800px;
-  background-image: linear-gradient(135deg, rgba(229, 221, 221, 0.5), rgba(98, 93, 93, 0.5));
-  backdrop-filter: blur(20px);
-}
-
 
 body {
   display: flex;
   justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh; 
+  background-image: linear-gradient(135deg, #e5dddd80, #625d5d80);
+  backdrop-filter: blur(20px);
 }
 
 .blackJack {
@@ -17,7 +16,7 @@ body {
   position: absolute;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 100px;
-  color: bisque;
+  color: #ffe4c4;
   top: 1px;
   filter: drop-shadow(5px 5px 5px #4b4b4b);
 }
@@ -49,11 +48,32 @@ body {
   top: 20rem;
   border: none;
   border-radius: 15px;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   padding: 5px;
   margin: 20px;
   border: none;
   filter: drop-shadow(0px 20px 10px #575757);
+}
+
+game-info > current-bet-value {
+  background-color: #fadd00;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  border: none;
+  border-radius: 17px;
+  box-shadow: 5px 10px 20px #575757;
+  width: 350px;
+  height: 200px;
+  font-size: 30px;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #575757;
+  background-color: #e5dddd80
 }
 
 .bet-input {
@@ -175,4 +195,3 @@ div > h1 {
   cursor: pointer;
   filter: drop-shadow(0px 5px 3px #0d3b0d);
 }
-

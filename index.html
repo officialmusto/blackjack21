@@ -13,6 +13,15 @@
 </head>
 <body>
   <h1 class="blackJack">BlackJack</h1>
+  <div class="game-info">
+    <div id="player-balance">
+      <span>Balance: </span>
+    </div>
+    <div class="current-bet">
+      <span>Bet Amount: </span>
+      <span id="current-bet-value">0</span>
+    </div>
+  </div>
   <div class="buttons">
     <button id="hit-btn">HIT</button>
     <button id="bet-btn">$$$</button>
@@ -21,12 +30,9 @@
   <div class="bet-input">
     <input type="range" min="1" max="100" step="1" value="1" id="bet-slider"></input>
   </div>
-
-
   </div>
   <div class="back-of-cards">
-    <!-- <img id="back-red" src="assets/SVGs/back-of-cards/back-red.svg" alt="back-red">
-    <img id="back-blue" src="assets/SVGs/back-of-cards/back-blue.svg" alt="back-blue"> -->
+
   </div>
   <div class="front-of-cards">
     <img id="card-front0" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">

@@ -29,7 +29,8 @@ let playerOneHand = decks.p1
 let shuffledDeck = decks.shuffled
 let dealerHand = decks.dealer
 
-
+let playerBalance = 100
+let currentBet = 0
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
 const stayBtn = document.getElementById('stay-btn')
@@ -56,6 +57,7 @@ hitBtn.addEventListener('click', handleHitClick)
 stayBtn.addEventListener('click', stayLogic)
 betBtn.addEventListener('click', toggleSlider)
 resetBtn.addEventListener('click', resetGame)
+betSlider.addEventListener('input', updateBet)
 
 /* ------------------- FUNCTIONS ------------------- */
 // GAME INITIALIZER
@@ -172,6 +174,11 @@ function checkDecks(card) {
   })
   return duplicate
 }
+
+function updateBet() {
+
+}
+
 function toggleSlider() {
   if (betSlider.style.display === 'none') {
     betSlider.style.display = 'block'
@@ -179,6 +186,11 @@ function toggleSlider() {
     betSlider.style.display = 'none'
   }
 }
+
+function updateBet() {
+
+}
+
 function blurFrontOfCards() {
   frontOfCards.forEach(card => {
     card.style.filter = 'blur(20px)'
@@ -207,8 +219,8 @@ function determineWinner() {
       resetBtn.style.display = 'block'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
-      finalMessage.style.color = '#cc1e1e'
-      finalMessage.innerText = `Both dealer and player bust! It's a tie!`
+      finalMessage.style.color = 'blue'
+      finalMessage.innerText = `Both bust! It's a tie!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
       playerTotal.innerText = `Player Total : ${playerHandValue}`
       }, 2000)
@@ -222,7 +234,7 @@ function determineWinner() {
       resetBtn.style.display = 'block'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
-      finalMessage.style.color = '#cc1e1e'
+      finalMessage.style.color = 'green'
       finalMessage.innerText = `Dealer busts! Player wins!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
       playerTotal.innerText = `Player Total : ${playerHandValue}`
@@ -267,7 +279,7 @@ function determineWinner() {
       resetBtn.style.display = 'block'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
-      finalMessage.style.color = '#cc1e1e'
+      finalMessage.style.color = 'green'
       finalMessage.innerText = `Player wins!`  
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
       playerTotal.innerText = `Player Total : ${playerHandValue}`  
@@ -282,7 +294,7 @@ function determineWinner() {
       resetBtn.style.display = 'block'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
-      finalMessage.style.color = '#cc1e1e'
+      finalMessage.style.color = 'blue'
       finalMessage.innerText = `It's a tie!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
       playerTotal.innerText = `Player Total : ${playerHandValue}`
