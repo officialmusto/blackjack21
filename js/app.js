@@ -203,7 +203,7 @@ function determineWinner() {
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `Both dealer and player bust! It's a tie!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
-      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
+      playerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   } else if (dealerHandValue > 21) {
     setTimeout(function(){
@@ -214,7 +214,7 @@ function determineWinner() {
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `Dealer busts! Player wins!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
-      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
+      playerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   } else if (playerHandValue > 21) {
     hitBtn.disabled = true
@@ -226,7 +226,7 @@ function determineWinner() {
     finalMessage.style.color = '#cc1e1e'
     finalMessage.innerText = `Player busts! Dealer wins!`
     dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
-    dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
+    playerTotal.innerText = `Dealer Total : ${playerHandValue}`
     }, 2000)
   } else if (dealerHandValue > playerHandValue) {
     setTimeout(function(){
@@ -237,7 +237,7 @@ function determineWinner() {
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `Dealer wins!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
-      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
+      playerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   } else if (playerHandValue > dealerHandValue) {
     setTimeout(function(){
@@ -248,7 +248,7 @@ function determineWinner() {
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `Player wins!`  
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
-      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`  
+      playerTotal.innerText = `Dealer Total : ${playerHandValue}`  
       }, 2000)
   } else {
     setTimeout(function(){
@@ -259,7 +259,7 @@ function determineWinner() {
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `It's a tie!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
-      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
+      playerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   }
 }
@@ -270,6 +270,8 @@ function resetGame() {
   frontOfCards.forEach(function(card) {
     card.style.filter = 'none'
   })
+  dealerTotal.innerText = ''
+  playerTotal.innerText = ''
   finalMessage.innerText = ''
   hitBtn.disabled = false
   stayBtn.disabled = false
