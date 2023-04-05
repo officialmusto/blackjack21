@@ -1,40 +1,28 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh; 
   background-image: linear-gradient(135deg, #e5dddd80, #625d5d80);
   backdrop-filter: blur(20px);
 }
 
-.blackJack {
-  display: flexbox;
+
+
+.title {
+  display: flex;
   justify-content: center;
-  align-content: center;
-  position: absolute;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 100px;
   color: #ffe4c4;
-  top: 1px;
   filter: drop-shadow(5px 5px 5px #4b4b4b);
-}
+  border: solid;
+  border-radius: 20px;
 
-/* .back-of-cards {
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-  position: absolute;
-  top: 12rem;
-  height: 250px;
-  width: 700px;
 }
-
-#back-red, #back-blue {
-  border: none;`
-  filter: drop-shadow(10px 10px 20px #575757);
-} */
 
 .front-of-cards {
   display: flex;
@@ -44,8 +32,6 @@ body {
   display: flex;
   height: 200px;
   flex-direction: row;
-  position: relative;
-  top: 20rem;
   border: none;
   border-radius: 15px;
   background-color: #ffffff;
@@ -53,10 +39,6 @@ body {
   margin: 20px;
   border: none;
   filter: drop-shadow(0px 20px 10px #575757);
-}
-
-game-info > current-bet-value {
-  background-color: #fadd00;
 }
 
 .game-info {
@@ -75,66 +57,40 @@ game-info > current-bet-value {
   color: #575757;
   background-color: #e5dddd80
 }
-
-.bet-input {
+.game-container {
   display: flex;
-  justify-content: center;
-  align-content: center;
-  position: absolute;
-  top: 45rem;
-}
-
-.bet-input input {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  top: 40rem;
-  height: 40px;
-  width: 150px;
-  font-size: 30px;
-  padding: 20px;
-}
-
-div > #bet-btn, #stay-btn, #hit-btn {
-  align-content: center;
-  border: none;
-  border-radius: 15px;
-  font-size: x-large;
+  flex-direction: column;
   align-items: center;
-  font-family: 'Josefin Sans', sans-serif;
-  cursor: pointer;
-  height: 50px;
-  width: 150px;
 }
-#bet-btn {
-  color: #92dc92;
-  background-color: #1a551a;
-  filter: drop-shadow(0px 10px 10px #878787);
-}
-
-#stay-btn{
-  color: #eaa4a4;
-  background-color: #602020;
-  filter: drop-shadow(0px 10px 10px #878787);
-}
-
-#hit-btn{
-  color: #a3c8ed;
-  background-color: #1d3055;
-  filter: drop-shadow(0px 10px 10px #878787);
-}
-
 .buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
-  position: absolute;
-  margin: 10px;
-  top: 40rem;
-  height: 80px;
-  width: 700px;
-  filter: drop-shadow(5px 5px 5px #878787);
+
+  width: 600px;
+}
+
+#bet-btn, #stay-btn, #hit-btn {
+  border: none;
+  border-radius: 15px;
+  font-size: x-large;
+  font-family: 'Josefin Sans', sans-serif;
+  cursor: pointer;
+  height: 50px;
+  width: 150px;
+  box-shadow:  2px 10px 20px #262626;
+}
+#bet-btn {
+  color: #92dc92;
+  background-color: #1a551a;
+}
+#stay-btn{
+  color: #eaa4a4;
+  background-color: #602020;
+}
+#hit-btn{
+  color: #a3c8ed;
+  background-color: #1d3055;
 }
 
 .outcome-message{

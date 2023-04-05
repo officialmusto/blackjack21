@@ -12,7 +12,7 @@
   <title id="title">BlackJack</title>
 </head>
 <body>
-  <h1 class="blackJack">BlackJack</h1>
+  <h1 class="title">BlackJack</h1>
   <div class="game-info">
     <div id="player-balance">
       <span>Balance: </span>
@@ -22,28 +22,23 @@
       <span id="current-bet-value">0</span>
     </div>
   </div>
-  <div class="buttons">
-    <button id="hit-btn">HIT</button>
-    <button id="bet-btn">$$$</button>
-    <button id="stay-btn">STAY</button>
-  </div>
+  
   <div class="bet-input">
     <input type="range" min="1" max="100" step="1" value="1" id="bet-slider"></input>
   </div>
-  </div>
-  <div class="back-of-cards">
-
-  </div>
-  <div class="front-of-cards">
-    <img id="card-front0" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">
-    <img id="card-front1" src="assets/SVGs/front-of-cards/Joker2.svg" alt="front-cards">
-    <img id="card-front2" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">
-    <img id="card-front3" src="assets/SVGs/front-of-cards/Joker2.svg" alt="front-cards">
-    <img id="card-front4" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">
-  </div>
-  <div class="dealer-hand">
-    <img id="dealer-card0" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">
-    <img id="dealer-card1" src="assets/SVGs/front-of-cards/Joker2.svg" alt="front-cards">
+  <div class="game-container">
+    <div class="front-of-cards">
+      <img id="card-front0" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">
+      <img id="card-front1" src="assets/SVGs/front-of-cards/Joker2.svg" alt="front-cards">
+      <img id="card-front2" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">
+      <img id="card-front3" src="assets/SVGs/front-of-cards/Joker2.svg" alt="front-cards">
+      <img id="card-front4" src="assets/SVGs/front-of-cards/Joker1.svg" alt="front-cards">
+    </div>
+    <div class="buttons">
+      <button id="hit-btn">HIT</button>
+      <button id="bet-btn">$$$</button>
+      <button id="stay-btn">STAY</button>
+    </div>
   </div>
   <div class="outcome-message">
     <h1 id="final-message"></h1>
