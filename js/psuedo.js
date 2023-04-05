@@ -26,7 +26,8 @@ GAME STRUCTURE:
 Step 5: Determine the winner
 
 Create a function determineWinner that will compare the player's and dealer's hand values and determine the winner.
-Step 6: Update the render function
+
+dStep 6: Update the render function
 
 Modify the render function to handle both player and dealer cards. Consider hiding one of the dealer's cards until the end of the round (you can use CSS to hide the card and reveal it later).
 Step 7: Modify the game flow

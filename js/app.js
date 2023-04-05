@@ -19,14 +19,16 @@ class Deck {
     this.p1 = []
     this.dealer = []
     this.shuffled = []
+    this.dealerHandValue = 0
+    this.playerHandValue = 0
   }
 }
-
 // Created a variable to utilize the '.push()' method and push the selected card into the dispose pile.
 let decks = new Deck()
 let playerOneHand = decks.p1
 let shuffledDeck = decks.shuffled
 let dealerHand = decks.dealer
+
 
 /* ------------------- CACHED REFERENCES ------------------- */
 const hitBtn = document.getElementById('hit-btn')
@@ -48,7 +50,7 @@ const dealerCard1 = document.getElementById('dealer-card1')
 
 
 /* ------------------- EVENT LISTENERS ------------------- */
-hitBtn.addEventListener('click', handleClick)
+hitBtn.addEventListener('click', handleHitClick)
 stayBtn.addEventListener('click', stayLogic)
 betBtn.addEventListener('click', toggleSlider)
 resetBtn.addEventListener('click', resetGame)
@@ -72,10 +74,10 @@ function init() {
   if (shuffledDeck.length < 1) {
     generateCard()
     render()
-    addPlayerCards()
     playerOneTurn()
     dealerTurn()
     createFullDeck()
+    calculatePlayerHandValue()
   } else {
     hitBtn.disabled = true
     betSlider.style.display = 'none'
@@ -84,10 +86,10 @@ function init() {
   }
 }
 
-function handleClick() {
+function handleHitClick() {
   playerOneHand.push(shuffledDeck.pop())
   render()
-  addPlayerCards()
+  calculatePlayerHandValue()
   console.log(shuffledDeck)
 }
 
@@ -110,101 +112,58 @@ function generateCard() {
 function playerOneTurn() {
   playerOneHand.push(shuffledDeck.pop(), shuffledDeck.pop())
   render()
-  addPlayerCards()
+  calculatePlayerHandValue(playerOneHand)
 }
 function dealerTurn() {
   dealerHand.push(shuffledDeck.pop(), shuffledDeck.pop())
   render()
-  addPlayerCards()
+  calculatePlayerHandValue(dealerHand)
 }
-console.log(shuffledDeck)
 
-
-function addPlayerCards() {
-  let totalValue = 0
+function calculatePlayerHandValue() {
+  let handValue = 0
   let acesCount = 0
-  
+
   for (let card of playerOneHand) {
     if (card.value === 'A') {
       acesCount++
-      totalValue += 11
+      handValue += 11
     } else if (['J', 'Q', 'K'].includes(card.value)) {
-      totalValue += 10
+      handValue += 10
     } else {
-      totalValue += parseInt(card.value)
+      handValue += parseInt(card.value)
     }
   }
-  // Adjust for aces
-  while (totalValue > 21 && acesCount > 0) {
-    totalValue -= 10
+
+  while (handValue > 21 && acesCount > 0) {
+    handValue -= 10
     acesCount--
   }
-  
-  if (totalValue > 21) {
-    hitBtn.disabled = true
-    setTimeout(function(){
-    blurFrontOfCards()
-    resetBtn.style.display = 'block'
-    betSlider.style.display = 'none'
-    betBtn.style.display = 'none'
-    finalMessage.style.color = '#cc1e1e'
-    finalMessage.innerText = `Lost your bet, try again? \nTOTAL : ${totalValue}`
-    return
-    }, 2000)
-  } else if (totalValue === 21) {
-    hitBtn.disabled = true
-    setTimeout(function(){
-    blurFrontOfCards()
-    resetBtn.style.display = 'block'
-    betSlider.style.display = 'none'
-    betBtn.style.display = 'none'
-    finalMessage.style.color = 'green'
-    finalMessage.innerText = `21 COUNT! YOU WIN \nTOTAL : ${totalValue}`
-    return
-    }, 2000)
-  } else if (totalValue < 21 && playerOneHand.length === 5) {
-    hitBtn.disabled = true
-    setTimeout(function(){
-    blurFrontOfCards()
-    resetBtn.style.display = 'block'
-    betSlider.style.display = 'none'
-    betBtn.style.display = 'none'
-    finalMessage.style.color = 'green'
-    finalMessage.innerText = `OVER 5 CARDS, BUT UNDER 21 - YOU WIN \nTOTAL : ${totalValue}`
-    return
-    }, 2000)
-  }
-}
 
-function playDealerHand() {
-  let dealerHandValue = 0
+  return handValue
+}
+function calculateDealerHandValue() {
+  let handValue = 0
   let acesCount = 0
-  let i = 0
 
-  // Draw cards until the dealer's hand value is at least 17
-  while (dealerHandValue < 17) {
-    dealerHand.push(shuffledDeck.pop())
-    i++
-  // Calculate the dealer's current hand value
   for (let card of dealerHand) {
-    if (card.value === 'A') {
+    if (card.value === "A") {
       acesCount++
-      dealerHandValue += 11
-    } else if (['J', 'Q', 'K'].includes(card.value)) {
-      dealerHandValue += 10
+      handValue += 11
+    } else if (["J", "Q", "K"].includes(card.value)) {
+      handValue += 10
     } else {
-      dealerHandValue += parseInt(card.value)
+      handValue += parseInt(card.value)
     }
   }
-  // Adjust for aces
-  while (dealerHandValue > 21 && acesCount > 0) {
-    dealerHandValue -= 10
+
+  while (handValue > 21 && acesCount > 0) {
+    handValue -= 10
     acesCount--
   }
-  }
-  return console.log(dealerHandValue)
-}
 
+  return handValue
+}
 
 function checkDecks(card) {
   let duplicate = false
@@ -232,24 +191,44 @@ function blurFrontOfCards() {
 
 function stayLogic() {
   stayBtn.disabled = true
-  playDealerHand()
-  addPlayerCards()
+  calculatePlayerHandValue()
+  determineWinner()
   finalMessage.innerText = 'BUTTON PRESSED!' // <-- TESTER
 }
 
-function determineWinner(){
-  
+function determineWinner() {
+  let dealerHandValue = calculateDealerHandValue(dealerHand)
+  let playerHandValue = calculatePlayerHandValue(playerOneHand)
+
+  console.log(`Dealer hand value: ${dealerHandValue}`)
+  console.log(`Player hand value: ${playerHandValue}`)
+
+  if (dealerHandValue > 21 && playerHandValue > 21) {
+    console.log("Both dealer and player bust! It's a tie!")
+  } else if (dealerHandValue > 21) {
+    console.log("Dealer busts! Player wins!")
+  } else if (playerHandValue > 21) {
+    console.log("Player busts! Dealer wins!")
+  } else if (dealerHandValue > playerHandValue) {
+    console.log("Dealer wins!")
+  } else if (playerHandValue > dealerHandValue) {
+    console.log("Player wins!")
+  } else {
+    console.log("It's a tie!")
+  }
 }
 
 
 function resetGame() {
   shuffledDeck.length = 0
   playerOneHand.length = 0
+  dealerHand.length = 0
   frontOfCards.forEach(function(card) {
     card.style.filter = 'none'
   })
   finalMessage.innerText = ''
   hitBtn.disabled = false
+  stayBtn.disabled = false
   betSlider.style.display = 'none'
   init()
 }
