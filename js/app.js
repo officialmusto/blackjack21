@@ -195,6 +195,10 @@ function determineWinner() {
   console.log(`Player hand value: ${playerHandValue}`)
 
   if (dealerHandValue > 21 && playerHandValue > 21) {
+    hitBtn.style.pointerEvents = "none"
+    stayBtn.style.pointerEvents = "none"
+    hitBtn.disabled = true
+    stayBtn.disabled = true
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
@@ -206,6 +210,10 @@ function determineWinner() {
       playerTotal.innerText = `Player Total : ${playerHandValue}`
       }, 2000)
   } else if (dealerHandValue > 21) {
+    hitBtn.style.pointerEvents = "none"
+    stayBtn.style.pointerEvents = "none"
+    hitBtn.disabled = true
+    stayBtn.disabled = true
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
@@ -217,7 +225,10 @@ function determineWinner() {
       playerTotal.innerText = `Player Total : ${playerHandValue}`
       }, 2000)
   } else if (playerHandValue > 21) {
+    hitBtn.style.pointerEvents = "none"
+    stayBtn.style.pointerEvents = "none"
     hitBtn.disabled = true
+    stayBtn.disabled = true
     setTimeout(function(){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
@@ -229,6 +240,10 @@ function determineWinner() {
     playerTotal.innerText = `Player Total : ${playerHandValue}`
     }, 2000)
   } else if (dealerHandValue > playerHandValue) {
+    hitBtn.style.pointerEvents = "none"
+    stayBtn.style.pointerEvents = "none"
+    hitBtn.disabled = true
+    stayBtn.disabled = true
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
@@ -240,6 +255,10 @@ function determineWinner() {
       playerTotal.innerText = `Player Total : ${playerHandValue}`
       }, 2000)
   } else if (playerHandValue > dealerHandValue) {
+    hitBtn.style.pointerEvents = "none"
+    stayBtn.style.pointerEvents = "none"
+    hitBtn.disabled = true
+    stayBtn.disabled = true
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
@@ -251,6 +270,10 @@ function determineWinner() {
       playerTotal.innerText = `Player Total : ${playerHandValue}`  
       }, 2000)
   } else {
+    hitBtn.style.pointerEvents = "none"
+    stayBtn.style.pointerEvents = "none"
+    hitBtn.disabled = true
+    stayBtn.disabled = true
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
@@ -270,6 +293,8 @@ function resetGame() {
   frontOfCards.forEach(function(card) {
     card.style.filter = 'none'
   })
+  hitBtn.style.pointerEvents = "auto"
+  stayBtn.style.pointerEvents = "auto"
   dealerTotal.innerText = ''
   playerTotal.innerText = ''
   finalMessage.innerText = ''

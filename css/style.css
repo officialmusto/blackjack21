@@ -121,10 +121,12 @@ div > #bet-btn, #stay-btn, #hit-btn {
   display: flex;
   position: absolute;
   justify-content: center;
-  top: 13rem;
+  flex-direction: column;
+  top: 17rem;
   font-size: 40px;
   font-family: 'Prompt', sans-serif;
   text-align: center;
+  line-height: 1px;
 }
 
 div > h1 {
@@ -144,7 +146,7 @@ div > h1 {
   font-family: 'Josefin Sans', sans-serif;
   height: 80px;
   width: 180px;
-  top: 24rem;
+  top: 40rem;
   background-color: #e28e8e;
   cursor: pointer;
   color: #ffffff;
@@ -152,7 +154,7 @@ div > h1 {
 }
 
 .animate-blur {
-  transition: filter 0.5 ease-in-out;
+  transition: filter 1 ease-in-out;
 }
 #bet-slider {
   -webkit-appearance: none;
