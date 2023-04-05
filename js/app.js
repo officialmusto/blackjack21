@@ -37,6 +37,8 @@ const betBtn = document.getElementById('bet-btn')
 const resetBtn = document.getElementById('reset')
 const betSlider = document.getElementById('bet-slider')
 const finalMessage = document.getElementById('final-message')
+const dealerTotal = document.getElementById('dealer-total')
+const playerTotal = document.getElementById('player-total')
 
 const frontCard0 = document.getElementById('card-front0')
 const frontCard1 = document.getElementById('card-front1')
@@ -58,7 +60,6 @@ resetBtn.addEventListener('click', resetGame)
 /* ------------------- FUNCTIONS ------------------- */
 // GAME INITIALIZER
 init()
-
 function createFullDeck() {
   let newDeck = []
   for (let suit of suits) {
@@ -68,7 +69,6 @@ function createFullDeck() {
   }
   return newDeck
 }
-
 function init() {
   betSlider.style.display = 'none'
   if (shuffledDeck.length < 1) {
@@ -85,14 +85,12 @@ function init() {
     return
   }
 }
-
 function handleHitClick() {
   playerOneHand.push(shuffledDeck.pop())
   render()
   calculatePlayerHandValue()
   console.log(shuffledDeck)
 }
-
 function generateCard() {
   suitIdx = Math.floor(Math.random() * suits.length)
   suitPicked = suits[suitIdx]
@@ -119,7 +117,6 @@ function dealerTurn() {
   render()
   calculatePlayerHandValue(dealerHand)
 }
-
 function calculatePlayerHandValue() {
   let handValue = 0
   let acesCount = 0
@@ -164,7 +161,6 @@ function calculateDealerHandValue() {
 
   return handValue
 }
-
 function checkDecks(card) {
   let duplicate = false
   shuffledDeck.forEach(function(pOneCard) {
@@ -181,19 +177,16 @@ function toggleSlider() {
     betSlider.style.display = 'none'
   }
 }
-
 function blurFrontOfCards() {
   frontOfCards.forEach(card => {
     card.style.filter = 'blur(20px)'
   })
 }
-
 function stayLogic() {
   stayBtn.disabled = true
   calculatePlayerHandValue()
   determineWinner()
 }
-
 function determineWinner() {
   let dealerHandValue = calculateDealerHandValue(dealerHand)
   let playerHandValue = calculatePlayerHandValue(playerOneHand)
@@ -209,6 +202,8 @@ function determineWinner() {
       betBtn.style.display = 'none'
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `Both dealer and player bust! It's a tie!`
+      dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
+      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   } else if (dealerHandValue > 21) {
     setTimeout(function(){
@@ -218,6 +213,8 @@ function determineWinner() {
       betBtn.style.display = 'none'
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `Dealer busts! Player wins!`
+      dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
+      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   } else if (playerHandValue > 21) {
     hitBtn.disabled = true
@@ -228,6 +225,8 @@ function determineWinner() {
     betBtn.style.display = 'none'
     finalMessage.style.color = '#cc1e1e'
     finalMessage.innerText = `Player busts! Dealer wins!`
+    dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
+    dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
     }, 2000)
   } else if (dealerHandValue > playerHandValue) {
     setTimeout(function(){
@@ -237,6 +236,8 @@ function determineWinner() {
       betBtn.style.display = 'none'
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `Dealer wins!`
+      dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
+      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   } else if (playerHandValue > dealerHandValue) {
     setTimeout(function(){
@@ -245,7 +246,9 @@ function determineWinner() {
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
       finalMessage.style.color = '#cc1e1e'
-      finalMessage.innerText = `Player wins!`    
+      finalMessage.innerText = `Player wins!`  
+      dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
+      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`  
       }, 2000)
   } else {
     setTimeout(function(){
@@ -255,11 +258,11 @@ function determineWinner() {
       betBtn.style.display = 'none'
       finalMessage.style.color = '#cc1e1e'
       finalMessage.innerText = `It's a tie!`
+      dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
+      dealerTotal.innerText = `Dealer Total : ${playerHandValue}`
       }, 2000)
   }
 }
-
-
 function resetGame() {
   shuffledDeck.length = 0
   playerOneHand.length = 0
@@ -273,14 +276,11 @@ function resetGame() {
   betSlider.style.display = 'none'
   init()
 }
-
-// Renders Turn of P1
 function render() {
   resetBtn.style.display = 'none'
   betBtn.style.display = 'block'
   playerOneCards()
 }
-
 function playerOneCards() {
   if (playerOneHand.length < 2) {
     return
