@@ -182,8 +182,12 @@ function updateBet() {
 function toggleSlider() {
   if (betSlider.style.display === 'none') {
     betSlider.style.display = 'block'
+    stayBtn.style.display = 'none'
+      hitBtn.style.display = 'none'
   } else {
     betSlider.style.display = 'none'
+    stayBtn.style.display = 'block'
+    hitBtn.style.display = 'block'
   }
 }
 
@@ -219,6 +223,8 @@ function determineWinner() {
       resetBtn.style.display = 'block'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
+      stayBtn.style.display = 'none'
+      hitBtn.style.display = 'none'
       finalMessage.style.color = 'blue'
       finalMessage.innerText = `Both bust! It's a tie!`
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
@@ -232,6 +238,8 @@ function determineWinner() {
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
+      stayBtn.style.display = 'none'
+      hitBtn.style.display = 'none'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
       finalMessage.style.color = 'green'
@@ -247,6 +255,8 @@ function determineWinner() {
     setTimeout(function(){
     blurFrontOfCards()
     resetBtn.style.display = 'block'
+    stayBtn.style.display = 'none'
+      hitBtn.style.display = 'none'
     betSlider.style.display = 'none'
     betBtn.style.display = 'none'
     finalMessage.style.color = '#cc1e1e'
@@ -262,6 +272,8 @@ function determineWinner() {
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
+      stayBtn.style.display = 'none'
+      hitBtn.style.display = 'none'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
       finalMessage.style.color = '#cc1e1e'
@@ -277,6 +289,8 @@ function determineWinner() {
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
+      stayBtn.style.display = 'none'
+      hitBtn.style.display = 'none'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
       finalMessage.style.color = 'green'
@@ -292,6 +306,8 @@ function determineWinner() {
     setTimeout(function(){
       blurFrontOfCards()
       resetBtn.style.display = 'block'
+      stayBtn.style.display = 'none'
+      hitBtn.style.display = 'none'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
       finalMessage.style.color = 'blue'
@@ -321,6 +337,8 @@ function resetGame() {
 function render() {
   resetBtn.style.display = 'none'
   betBtn.style.display = 'block'
+  stayBtn.style.display = 'block'
+      hitBtn.style.display = 'block'
   playerOneCards()
   checkPlayerHandValue()
 }
