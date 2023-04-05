@@ -75,9 +75,7 @@ function init() {
     generateCard()
     render()
     playerOneTurn()
-    dealerTurn()
     createFullDeck()
-    calculatePlayerHandValue()
   } else {
     hitBtn.disabled = true
     betSlider.style.display = 'none'
@@ -86,10 +84,9 @@ function init() {
   }
 }
 function handleHitClick() {
-  playerOneHand.push(shuffledDeck.pop())
-  render()
-  calculatePlayerHandValue()
-  console.log(shuffledDeck)
+    playerOneHand.push(shuffledDeck.pop())
+    playerOneTurn()
+    console.log(shuffledDeck)
 }
 function generateCard() {
   suitIdx = Math.floor(Math.random() * suits.length)
@@ -108,14 +105,19 @@ function generateCard() {
   }
 }
 function playerOneTurn() {
+  if (playerOneHand.length < 2){
   playerOneHand.push(shuffledDeck.pop(), shuffledDeck.pop())
   render()
-  calculatePlayerHandValue(playerOneHand)
+  } else {
+
+    render()
+  }
 }
 function dealerTurn() {
-  dealerHand.push(shuffledDeck.pop(), shuffledDeck.pop())
-  render()
-  calculatePlayerHandValue(dealerHand)
+  while (calculateDealerHandValue() < 17) {
+    dealerHand.push(shuffledDeck.pop())
+    calculatePlayerHandValue(dealerHand)
+  }
 }
 function calculatePlayerHandValue() {
   let handValue = 0
@@ -184,6 +186,7 @@ function blurFrontOfCards() {
 }
 function stayLogic() {
   stayBtn.disabled = true
+  dealerTurn()
   calculatePlayerHandValue()
   determineWinner()
 }
@@ -307,6 +310,7 @@ function render() {
   resetBtn.style.display = 'none'
   betBtn.style.display = 'block'
   playerOneCards()
+  checkPlayerHandValue()
 }
 function playerOneCards() {
   if (playerOneHand.length < 2) {
@@ -328,5 +332,10 @@ function playerOneCards() {
   if (playerOneHand[4]) {
     frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${playerOneHand[4].combined}.svg`)
     frontCard4.style.display = 'block'
+  }
+}
+function checkPlayerHandValue() {
+  if (calculatePlayerHandValue() >= 21) {
+    stayLogic()
   }
 }
