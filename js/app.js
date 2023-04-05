@@ -174,7 +174,6 @@ function checkDecks(card) {
   })
   return duplicate
 }
-
 function toggleSlider() {
   if (betSlider.style.display === 'none') {
     betSlider.style.display = 'block'
@@ -193,7 +192,6 @@ function stayLogic() {
   stayBtn.disabled = true
   calculatePlayerHandValue()
   determineWinner()
-  finalMessage.innerText = 'BUTTON PRESSED!' // <-- TESTER
 }
 
 function determineWinner() {
@@ -204,17 +202,60 @@ function determineWinner() {
   console.log(`Player hand value: ${playerHandValue}`)
 
   if (dealerHandValue > 21 && playerHandValue > 21) {
-    console.log("Both dealer and player bust! It's a tie!")
+    setTimeout(function(){
+      blurFrontOfCards()
+      resetBtn.style.display = 'block'
+      betSlider.style.display = 'none'
+      betBtn.style.display = 'none'
+      finalMessage.style.color = '#cc1e1e'
+      finalMessage.innerText = `Both dealer and player bust! It's a tie!`
+      }, 2000)
   } else if (dealerHandValue > 21) {
-    console.log("Dealer busts! Player wins!")
+    setTimeout(function(){
+      blurFrontOfCards()
+      resetBtn.style.display = 'block'
+      betSlider.style.display = 'none'
+      betBtn.style.display = 'none'
+      finalMessage.style.color = '#cc1e1e'
+      finalMessage.innerText = `Dealer busts! Player wins!`
+      }, 2000)
   } else if (playerHandValue > 21) {
-    console.log("Player busts! Dealer wins!")
+    hitBtn.disabled = true
+    setTimeout(function(){
+    blurFrontOfCards()
+    resetBtn.style.display = 'block'
+    betSlider.style.display = 'none'
+    betBtn.style.display = 'none'
+    finalMessage.style.color = '#cc1e1e'
+    finalMessage.innerText = `Player busts! Dealer wins!`
+    }, 2000)
   } else if (dealerHandValue > playerHandValue) {
-    console.log("Dealer wins!")
+    setTimeout(function(){
+      blurFrontOfCards()
+      resetBtn.style.display = 'block'
+      betSlider.style.display = 'none'
+      betBtn.style.display = 'none'
+      finalMessage.style.color = '#cc1e1e'
+      finalMessage.innerText = `Dealer wins!`
+      }, 2000)
   } else if (playerHandValue > dealerHandValue) {
-    console.log("Player wins!")
+    setTimeout(function(){
+      blurFrontOfCards()
+      resetBtn.style.display = 'block'
+      betSlider.style.display = 'none'
+      betBtn.style.display = 'none'
+      finalMessage.style.color = '#cc1e1e'
+      finalMessage.innerText = `Player wins!`    
+      }, 2000)
   } else {
-    console.log("It's a tie!")
+    setTimeout(function(){
+      blurFrontOfCards()
+      resetBtn.style.display = 'block'
+      betSlider.style.display = 'none'
+      betBtn.style.display = 'none'
+      finalMessage.style.color = '#cc1e1e'
+      finalMessage.innerText = `It's a tie!`
+      }, 2000)
   }
 }
 
