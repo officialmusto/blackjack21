@@ -59,6 +59,7 @@ let dealerCard0 = document.getElementById('dealer-card0')
 let dealerCard1 = document.getElementById('dealer-card1')
 let dealerCard2 = document.getElementById('dealer-card2')
 let dealerCard3 = document.getElementById('dealer-card3')
+let dealerCard4 = document.getElementById('dealer-card4')
 
 /* ------------------- EVENT LISTENERS ------------------- */
 hitBtn.addEventListener('click', handleHitClick)
@@ -74,8 +75,6 @@ nextBtn.addEventListener('click', nextTurn)
 
 /* ------------------- FUNCTIONS ------------------- */
 // GAME INITIALIZER
-init()
-console.log(betValue)
 function createFullDeck() {
   let newDeck = []
   for (let suit of suits) {
@@ -85,12 +84,17 @@ function createFullDeck() {
   }
   return newDeck
 }
-dealerTurn()
+init()
+
 function init() {
+  dealerCard2.style.display = 'none'
+  dealerCard3.style.display = 'none'
+  dealerCard4.style.display = 'none'
   console.log(dealerHand)
   betSlider.style.display = 'none'
   if (shuffledDeck.length < 1) {
     generateCard()
+    dealerTurn()
     render()
     playerOneTurn()
     createFullDeck()
@@ -136,7 +140,7 @@ function dealerTurn() {
   dealerCard2.style.display = 'none'
   dealerCard3.style.display = 'none'
   while (calculateDealerHandValue() < 17) {
-    dealerHand.push(shuffledDeck.pop(), shuffledDeck.pop())
+    dealerHand.push(shuffledDeck.pop())
     dealerCard0.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[0].combined}.svg`)
     dealerCard1.setAttribute('src', `assets/SVGs/back-of-cards/back-blue.svg`)
     if (dealerHand[2]) {
@@ -229,13 +233,11 @@ function checkBalanceZero() {
   dealerHandValue = decks.dealerHandValue
   playerHandValue = decks.playerHandValue
     if (playerBalance <= 0) {
-      blurFrontOfCards()
       hitBtn.disabled = true
       stayBtn.disabled = true
-      betBtn.disabled = true
       betSlider.style.display = "none"
       setTimeout(function(){
-
+        blurFrontOfCards()
         finalMessage.innerText = `Balance: $0, you lost.`
         playerBalance -= betValue
         resetBtn.style.display = 'block'
@@ -255,17 +257,16 @@ function checkBalanceZero() {
 }
 function updateBet() {
     betValue = Math.min(betSlider.value, playerBalance)
-    betBalance.innerText = `Balance : $${playerBalance - betValue}`
+    betBalance.innerText = `$${playerBalance - betValue}`
     document.getElementById('current-bet-value').innerText = `$${betValue}`
 }
 function blurFrontOfCards() {
-  frontOfCards.forEach(card => {
+  frontOfCards.forEach(function(card) {
     card.style.filter = 'blur(20px)'
   })
 }
 function stayLogic() {
   stayBtn.disabled = true
-  dealerTurn()
   calculatePlayerHandValue()
   determineWinner()
 }
@@ -308,13 +309,12 @@ function determineWinner() {
       hitBtn.disabled = true
       stayBtn.disabled = true
       setTimeout(function(){
-        betValue = 0
         dealerCard1.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[1].combined}.svg`)
         dealerCard1.style.display = 'block'
         dealerCard2.style.display = 'block'
         dealerCard3.style.display = 'block'
         blurFrontOfCards()
-        playerBalance += betValue 
+        playerBalance += betValue
         nextBtn.style.display = 'block'
         resetBtn.style.display = 'block'
         stayBtn.style.display = 'none'
@@ -361,12 +361,15 @@ function determineWinner() {
       stayBtn.disabled = true
       playerBalance -= betValue
       setTimeout(function(){
-        betValue = 0
+        blurFrontOfCards()
+        dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
+        playerTotal.innerText = `Player Total : ${playerHandValue}`
         dealerCard1.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[1].combined}.svg`)
         dealerCard1.style.display = 'block'
         dealerCard2.style.display = 'block'
         dealerCard3.style.display = 'block'
-        blurFrontOfCards()
+        frontCard0.style.display = 'none'
+        frontCard1.style.display = 'none'
         nextBtn.style.display = 'block'
         resetBtn.style.display = 'block'
         stayBtn.style.display = 'none'
@@ -377,8 +380,6 @@ function determineWinner() {
         infoBox.style.display = 'none'
         finalMessage.style.color = '#cc1e1e'
         finalMessage.innerText = `Dealer wins!`
-        dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
-        playerTotal.innerText = `Player Total : ${playerHandValue}`
       }, 2000)
   } else if (playerHandValue > dealerHandValue) {
       hitBtn.style.pointerEvents = "none"
@@ -386,7 +387,6 @@ function determineWinner() {
       hitBtn.disabled = true
       stayBtn.disabled = true
       setTimeout(function(){
-        betValue = 0
         dealerCard1.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[1].combined}.svg`)
         dealerCard1.style.display = 'block'
         dealerCard2.style.display = 'block'
@@ -432,18 +432,25 @@ function determineWinner() {
         dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
         playerTotal.innerText = `Player Total : ${playerHandValue}`
       }, 2000)
-      betBalance.innerText = `Balance : $${playerBalance}`
+      betBalance.innerText = `$${playerBalance}`
+      dealerTurn()
     }
     checkBalanceZero()
 }
 function resetGame() {
+  frontCard0.style.display = 'block'
+  frontCard1.style.display = 'block'
+  dealerCard2.style.display = 'none'
+  dealerCard3.style.display = 'none'
+  dealerCard4.style.display = 'none'
+  dealerCard1.setAttribute('src', `assets/SVGs/back-of-cards/back-blue.svg`)
   betSlider.max = playerBalance
   betSlider.value = betValue
+  betValue = betBalance.innerText
   playerBalance = 100
-  betBalance.innerText = 'Balance $100'
+  betBalance.innerText = '$100'
   betAmount.innerText = 'Bet Amount '
-  betValue.value = 0
-  betValue = 0
+  betValue.innerText = `$0`
   betSlider.value = 1
   shuffledDeck.length = 0
   playerOneHand.length = 0
@@ -460,6 +467,7 @@ function resetGame() {
   hitBtn.disabled = false
   stayBtn.disabled = false
   betSlider.style.display = 'none'
+  betSlider.disabled = false
   betBtn.disabled = false
   betValue = 0
   title.style.display = 'block'
@@ -467,20 +475,22 @@ function resetGame() {
   init()
 }
 function nextTurn(){
-  betValue = 0
-  console.log(betValue)
+  frontCard0.style.display = 'block'
+  frontCard1.style.display = 'block'
   checkBalanceZero()
-  betAmount.innerText = `Bet Amount `
   betSlider.max = playerBalance
-  betSlider.value = betValue
-  betBalance.innerText = `Balance $${playerBalance}`
+  betSlider.value = 0
+  betAmount.innerText = `Bet Amount `
+  betValue = 
+  betValue = playerBalance
+  betBalance.innerText = `$${playerBalance}`
   betSlider.value = 1
   shuffledDeck.length = 0
   playerOneHand.length = 0
   dealerHand.length = 0
+  dealerCard1.setAttribute('src', `assets/SVGs/back-of-cards/back-blue.svg`)
   dealerCard2.style.display = 'none'
   dealerCard3.style.display = 'none'
-  dealerCard1.setAttribute('src', `assets/SVGs/back-of-cards/back-blue.svg`)
   frontOfCards.forEach(function(card) {
   card.style.filter = 'none'
   })
@@ -493,6 +503,7 @@ function nextTurn(){
   hitBtn.disabled = false
   stayBtn.disabled = false
   betSlider.style.display = 'none'
+  betSlider.disabled = false
   betBtn.disabled = false
   title.style.display = 'block'
   infoBox.style.display = 'block'
@@ -505,6 +516,7 @@ function nextTurn(){
 }
 function render() {
   resetBtn.style.display = 'none'
+  nextBtn.style.display = 'none'
   betBtn.style.display = 'block'
   stayBtn.style.display = 'block'
   hitBtn.style.display = 'block'

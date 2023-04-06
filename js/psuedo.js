@@ -43,11 +43,8 @@ Modify the render function to handle both player and dealer cards. Consider hidi
 // Update the render function to handle both player and dealer cards.
 // Modify the game flow to determine the winner and display the result after the dealer's turn is complete.
 
--CARDS DO NOT UPDATE AFTER PRESSING TURN
-
--BET AMOUNT UPDATES AFTER PRESSING BET BUTTON 
-!MAYBE DISABLE BET BUTTON AFTER SLIDER IS TOGGLED
-
+!BET AMOUNT NEEDS TO DOUBLE AFTER WINNING. 
+!CHECK AND MAKE SURE ALL OTHER BET MECHANICS WORK.
 
 --------------------------------------------------------------------------------------------------------- */
 
