@@ -211,13 +211,12 @@ function checkDecks(card) {
 function toggleSlider() {
     if (betSlider.style.display === 'none') {
       betSlider.style.display = 'block'
-      betBtn.innerText = 'Bet'
+      betBtn.innerText = 'confirm'
       stayBtn.style.display = 'none'
       hitBtn.style.display = 'none'
       betValue = betSlider.value
     } else {
-      betBtn.disabled = true
-      betBtn.innerText = `betted: $${betValue}`
+      betBtn.innerText = `$${betValue}`
       betSlider.style.display = 'none'
       stayBtn.style.display = 'block'
       hitBtn.style.display = 'block'
@@ -227,7 +226,6 @@ function applyBet() {
     betValue = betSlider.value
     betBtn.innerText = `Bet: $${betValue}`
     toggleSlider()
-    betBtn.disabled = true
 }
 function checkBalanceZero() {
   dealerHandValue = decks.dealerHandValue
@@ -238,6 +236,7 @@ function checkBalanceZero() {
       betSlider.style.display = "none"
       setTimeout(function(){
         blurFrontOfCards()
+        betSlider.style.display = "none"
         finalMessage.innerText = `Balance: $0, you lost.`
         playerBalance -= betValue
         resetBtn.style.display = 'block'
@@ -252,7 +251,7 @@ function checkBalanceZero() {
         playerTotal.innerText = `Player Total : ${playerHandValue}`
         betBalance.textContent = "$0"
         betValue.textContent = "$0"
-      }, 3000)
+      }, 1000)
     }
 }
 function updateBet() {
@@ -412,7 +411,7 @@ function determineWinner() {
       hitBtn.disabled = true
       stayBtn.disabled = true
       setTimeout(function(){
-        betValue = 0
+        betValue = playerBalance
         dealerCard1.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[1].combined}.svg`)
         dealerCard1.style.display = 'block'
         dealerCard2.style.display = 'block'
@@ -435,7 +434,6 @@ function determineWinner() {
       betBalance.innerText = `$${playerBalance}`
       dealerTurn()
     }
-    checkBalanceZero()
 }
 function resetGame() {
   frontCard0.style.display = 'block'
@@ -466,9 +464,9 @@ function resetGame() {
   finalMessage.innerText = ''
   hitBtn.disabled = false
   stayBtn.disabled = false
-  betSlider.style.display = 'none'
-  betSlider.disabled = false
   betBtn.disabled = false
+  betSlider.disabled = false
+  betSlider.style.display = 'none'
   betValue = 0
   title.style.display = 'block'
   infoBox.style.display = 'block'
