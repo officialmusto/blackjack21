@@ -46,6 +46,7 @@ const playerTotal = document.getElementById('player-total')
 const betBalance = document.getElementById('player-balance')
 const betValue = document.getElementById('current-bet-value')
 const betAmount = document.getElementById('bet-amount')
+const nextBtn = document.getElementById('next-turn')
 
 const frontCard0 = document.getElementById('card-front0')
 const frontCard1 = document.getElementById('card-front1')
@@ -72,6 +73,8 @@ betBtn.addEventListener('click', function() {
   }
 })
 
+nextBtn.addEventListener('click', nextTurn)
+
 /* ------------------- FUNCTIONS ------------------- */
 // GAME INITIALIZER
 init()
@@ -96,6 +99,7 @@ function init() {
     betSlider.style.display = 'none'
     return
   }
+  nextBtn.style.display = 'none'
 }
 function handleHitClick() {
     playerOneHand.push(shuffledDeck.pop())
@@ -268,6 +272,7 @@ function determineWinner() {
     setTimeout(function(){
       blurFrontOfCards()
       playerBalance += currentBet
+      nextBtn.style.display = 'block'
       resetBtn.style.display = 'block'
       betSlider.style.display = 'none'
       betBtn.style.display = 'none'
@@ -289,6 +294,7 @@ function determineWinner() {
       blurFrontOfCards()
       playerBalance += currentBet * 2
       playerBalance += parseInt(currentBet) * 2
+      nextBtn.style.display = 'block'
       resetBtn.style.display = 'block'
       stayBtn.style.display = 'none'
       hitBtn.style.display = 'none'
@@ -309,6 +315,7 @@ function determineWinner() {
     setTimeout(function(){
     blurFrontOfCards()
     playerBalance -= currentBet
+    nextBtn.style.display = 'block'
     resetBtn.style.display = 'block'
     stayBtn.style.display = 'none'
     hitBtn.style.display = 'none'
@@ -330,6 +337,7 @@ function determineWinner() {
       blurFrontOfCards()
       playerBalance -= currentBet
       playerBalance -= parseInt(currentBet)
+      nextBtn.style.display = 'block'
       resetBtn.style.display = 'block'
       stayBtn.style.display = 'none'
       hitBtn.style.display = 'none'
@@ -351,6 +359,7 @@ function determineWinner() {
       blurFrontOfCards()
       playerBalance += currentBet * 2
       playerBalance += parseInt(currentBet) * 2
+      nextBtn.style.display = 'block'
       resetBtn.style.display = 'block'
       stayBtn.style.display = 'none'
       hitBtn.style.display = 'none'
@@ -371,6 +380,7 @@ function determineWinner() {
     setTimeout(function(){
       blurFrontOfCards()
       playerBalance += currentBet
+      nextBtn.style.display = 'block'
       resetBtn.style.display = 'block'
       stayBtn.style.display = 'none'
       hitBtn.style.display = 'none'
@@ -415,6 +425,38 @@ function resetGame() {
   infoBox.style.display = 'block'
   init()
 }
+function nextTurn(){
+  betBalance.innerText = `Balance: $${playerBalance}`
+  betAmount.innerText = `Bet Amount:`, betBalance
+  betValue.value = 0
+  currentBet = 0
+  betSlider.value = 1
+  playerOneHand.length = 0
+  dealerHand.length = 0
+  frontOfCards.forEach(function(card) {
+  card.style.filter = 'none'
+  })
+  betBtn.innerText = '$$$'
+  hitBtn.style.pointerEvents = 'auto'
+  stayBtn.style.pointerEvents = 'auto'
+  dealerTotal.innerText = ''
+  playerTotal.innerText = ''
+  finalMessage.innerText = ''
+  hitBtn.disabled = false
+  stayBtn.disabled = false
+  betSlider.style.display = 'none'
+  betBtn.disabled = false
+  currentBet = 0
+  title.style.display = 'block'
+  infoBox.style.display = 'block'
+  betBtn.style.display = 'block'
+  stayBtn.style.display = 'block'
+  hitBtn.style.display = 'block'
+  nextBtn.style.display = 'none'
+  resetBtn.style.display = 'none'
+  init()
+}
+
 function render() {
   resetBtn.style.display = 'none'
   betBtn.style.display = 'block'
