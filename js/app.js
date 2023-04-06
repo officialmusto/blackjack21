@@ -239,7 +239,7 @@ function checkBalanceZero() {
       }
   }
 
-  function updateBet() {
+function updateBet() {
     currentBet = Math.min(betSlider.value, playerBalance)
     betBalance.innerText = `Balance : $${playerBalance - currentBet}`
     document.getElementById('current-bet-value').innerText = `$${currentBet}`
@@ -335,7 +335,6 @@ function determineWinner() {
     setTimeout(function(){
       blurFrontOfCards()
       playerBalance -= currentBet
-      playerBalance -= parseInt(currentBet)
       nextBtn.style.display = 'block'
       resetBtn.style.display = 'block'
       stayBtn.style.display = 'none'
@@ -356,8 +355,7 @@ function determineWinner() {
     stayBtn.disabled = true
     setTimeout(function(){
       blurFrontOfCards()
-      playerBalance += currentBet * 2
-      playerBalance += parseInt(currentBet) * 2
+      playerBalance += currentBet
       nextBtn.style.display = 'block'
       resetBtn.style.display = 'block'
       stayBtn.style.display = 'none'
@@ -392,11 +390,13 @@ function determineWinner() {
       dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
       playerTotal.innerText = `Player Total : ${playerHandValue}`
       }, 2000)
+      betBalance.innerText = `Balance : $${playerBalance}`
+      checkBalanceZero()
   }
-  betBalance.innerText = `Balance : $${playerBalance}`
-  checkBalanceZero()
 }
 function resetGame() {
+  betSlider.max = playerBalance
+  betSlider.value = currentBet
   playerBalance = 100
   betBalance.innerText = 'Balance: $100'
   betAmount.innerText = 'Bet Amount: '
@@ -426,6 +426,8 @@ function resetGame() {
 }
 function nextTurn(){
   checkBalanceZero()
+  betSlider.max = playerBalance
+  betSlider.value = currentBet
   betBalance.innerText = `Balance: $${playerBalance}`
   betAmount.innerText = `Bet Amount: `, 
   betSlider.value = 1
