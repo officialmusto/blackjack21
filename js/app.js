@@ -327,7 +327,7 @@ function determineWinner() {
         finalMessage.innerText = `Dealer busts! Player wins!`
         dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
         playerTotal.innerText = `Player Total : ${playerHandValue}`
-      }, 2000)
+      }, 2000) 
   } else if (playerHandValue > 21) {
       hitBtn.style.pointerEvents = "none"
       stayBtn.style.pointerEvents = "none"
