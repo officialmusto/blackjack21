@@ -30,17 +30,24 @@ GAME STRUCTURE:
 Step 6: Update the render function
 
 Modify the render function to handle both player and dealer cards. Consider hiding one of the dealer's cards until the end of the round (you can use CSS to hide the card and reveal it later).
-Step 7: Modify the game flow
 
-After the dealer's turn is complete, call the determineWinner function to determine the winner and display the result.
-Here's a summary of the steps to implement the dealer functionality:
+// Step 7: Modify the game flow
+// After the dealer's turn is complete, call the determineWinner function to determine the winner and display the result.
+// Here's a summary of the steps to implement the dealer functionality:
 
-Modify the Deck class to store the dealer's hand.
-Update the init function to deal two initial cards for both the player and the dealer.
-Create a function playDealerHand to handle the dealer's logic.
-Update the stayLogic function to trigger the dealer's turn by calling playDealerHand.
-Create a function determineWinner to determine the winner based on player's and dealer's hand values.
-Update the render function to handle both player and dealer cards.
-Modify the game flow to determine the winner and display the result after the dealer's turn is complete.
+// Modify the Deck class to store the dealer's hand.
+// Update the init function to deal two initial cards for both the player and the dealer.
+// Create a function playDealerHand to handle the dealer's logic.
+// Update the stayLogic function to trigger the dealer's turn by calling playDealerHand.
+// Create a function determineWinner to determine the winner based on player's and dealer's hand values.
+// Update the render function to handle both player and dealer cards.
+// Modify the game flow to determine the winner and display the result after the dealer's turn is complete.
+
+-CARDS DO NOT UPDATE AFTER PRESSING TURN
+
+-BET AMOUNT UPDATES AFTER PRESSING BET BUTTON 
+!MAYBE DISABLE BET BUTTON AFTER SLIDER IS TOGGLED
+
 
 --------------------------------------------------------------------------------------------------------- */
+
