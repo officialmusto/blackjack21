@@ -31,13 +31,24 @@ body {
   justify-content: center;
 }
 
-#dealer-cards{
-  border: solid 2px black;
-  background-color: white;
+#dealer-front {
+  display: flex;
+}
+
+#dealer-back, #dealer-front{
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  padding: 5px;
+  border: none;
+  filter: drop-shadow(0px 20px 10px #575757);
 }
 
 #card-front0, #card-front1, #card-front2, #card-front3, #card-front4 {
   display: flex;
+  flex-direction: row;
   height: 200px;
   border-radius: 15px;
   background-color: #ffffff;
@@ -49,12 +60,18 @@ body {
 
 #info-box {
   display: flex;
-  align-self: center;
   padding: 10px;
   border: none;
   justify-content: space-evenly;
 }
+.current-bet {
+  text-align: left;
+}
 
+.dealer-cards {
+  display: flex;
+  flex-direction: row;
+}
 
 .game-info {
   display: flex;
@@ -62,23 +79,24 @@ body {
   text-align: left;
   justify-content: space-between;
   padding: 10px;
+  margin: 20px;
   border: none;
   border-radius: 17px;
   box-shadow: 5px 10px 20px #575757;
-  width: 350px;
-  height: 115px;
-  font-size: 30px;
+  width: 550px;
+  height: 215px;
+  font-size: 60px;
   font-family: 'Josefin Sans', sans-serif;
   color: #575757;
   background-color: #e5dddd80;
 }
 .game-container {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   padding: 10px;
   margin: 20px;
+  border: none;
 }
 .buttons {
   display: flex;
@@ -164,11 +182,11 @@ body {
 #bet-slider {
   -webkit-appearance: none;
   height: 7px;
-  width: 300px;
+  width: 350px;
   background-color: #39497f;
   border-radius: 20px;
   outline: none;
-  margin: 50px;
+  margin: 20px;
   filter: drop-shadow(0px 10px 5px #878787);
 
 }

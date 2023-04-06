@@ -55,9 +55,8 @@ let frontCard3 = document.getElementById('card-front3')
 let frontCard4 = document.getElementById('card-front4')
 let frontOfCards = document.querySelectorAll('.front-of-cards')
 
-let dealerCard0 = document.getElementById('dealer-card0')
-let dealerCard1 = document.getElementById('dealer-card1')
-
+let dealerCardFront = document.getElementById('dealer-front')
+let dealerCardBack = document.getElementById('dealer-back')
 
 /* ------------------- EVENT LISTENERS ------------------- */
 hitBtn.addEventListener('click', handleHitClick)
@@ -83,7 +82,9 @@ function createFullDeck() {
   }
   return newDeck
 }
+dealerTurn()
 function init() {
+  console.log(dealerHand)
   betSlider.style.display = 'none'
   if (shuffledDeck.length < 1) {
     generateCard()
@@ -131,7 +132,23 @@ function playerOneTurn() {
 function dealerTurn() {
   while (calculateDealerHandValue() < 17) {
     dealerHand.push(shuffledDeck.pop())
-    calculatePlayerHandValue(dealerHand)
+    dealerCard0.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[0].combined}.svg`)
+    dealerCard1.setAttribute('src', `assets/SVGs/front-of-cards/$dealerHand[1].combined}.svg`)
+    dealerCard2.style.display = 'none'
+    dealerCard3.style.display = 'none'
+    if (playerOneHand[2]) {
+      frontCard2.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[2].combined}.svg`)
+      frontCard2.style.display = 'block'
+    }
+    if (playerOneHand[3]) {
+      frontCard3.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[3].combined}.svg`)
+      frontCard3.style.display = 'block'
+    }
+    
+    if (playerOneHand[4]) {
+      frontCard4.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[4].combined}.svg`)
+      frontCard4.style.display = 'block'
+    }
   }
 }
 function calculatePlayerHandValue() {
@@ -399,8 +416,8 @@ function resetGame() {
   betSlider.max = playerBalance
   betSlider.value = currentBet
   playerBalance = 100
-  betBalance.innerText = 'Balance: $100'
-  betAmount.innerText = 'Bet Amount: '
+  betBalance.innerText = 'Balance $100'
+  betAmount.innerText = 'Bet Amount '
   betValue.value = 0
   currentBet = 0
   betSlider.value = 1
@@ -429,10 +446,10 @@ function nextTurn(){
   currentBet = 0
   console.log(currentBet)
   checkBalanceZero()
-  betAmount.innerText = `Bet Amount: `
+  betAmount.innerText = `Bet Amount `
   betSlider.max = playerBalance
   betSlider.value = currentBet
-  betBalance.innerText = `Balance: $${playerBalance}`
+  betBalance.innerText = `Balance $${playerBalance}`
   betSlider.value = 1
   shuffledDeck.length = 0
   playerOneHand.length = 0
