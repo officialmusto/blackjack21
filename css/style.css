@@ -157,7 +157,6 @@ body {
   border: none;
 }
 
-
 .outcome-message{
   display: flex;
   position: absolute;
@@ -224,16 +223,11 @@ body {
 
 /* ----------------------- MOBILE VARIATION ----------------------- */
 @media (max-width: 767px) {
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      height: 100%;
-    }
 
     body {
-      padding-right: 28px;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0px 0px -200px;
       display: flex;
       flex-direction: column;
       background-image: linear-gradient(135deg, #e5dddd80, #625d5d80);
@@ -252,14 +246,27 @@ body {
       border: none;
       border-radius: 20px;
     }
+
     
-    
+    #dealer-card0, #dealer-card1, #dealer-card2, #dealer-card3, #dealer-card4 {
+      display: flex;
+      flex-direction: row;
+      justify-content: right;
+      align-self: right;
+      height: 120px;
+      border-radius: 15px;
+      background-color: #ffffff;
+      padding: 5px;
+      margin: 0px 0px 0px -80px;
+      border: none;
+      filter: drop-shadow(0px 20px 10px #575757);
+    }
+
     .front-of-cards {
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       border: none;
-
     }
     
     #card-front0,
@@ -268,20 +275,18 @@ body {
     #card-front3,
     #card-front4 {
       display: flex;
-      height: 100px;
+      height: 150px;
       border-radius: 15px;
       background-color: #ffffff;
       border: none;
+      margin-left: 20px;
       filter: drop-shadow(0px 20px 10px #575757);
     }
     
     #info-box {
       display: flex;
-      align-self: center;
       border: none;
-      justify-content: space-evenly;
-      width: auto;
-      height: auto;
+      justify-content: space-between;
     }
     
     .game-info {
@@ -291,32 +296,44 @@ body {
       border: none;
       border-radius: 17px;
       box-shadow: 5px 10px 20px #575757;
-      width: 290px;
-      height: 80px;
+      width: 200px;
+      height: 100px;
       font-size: 18px;
       font-family: 'Josefin Sans', sans-serif;
       color: #575757;
       background-color: #e5dddd80;
     }
     
-    .game-container {
-      
+    #current-bet-value{
+      margin-top: 5px;
+      width: 80px;
+    }
 
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: none;
     }
 
     .buttons {
       display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
+      flex-direction: row;
+      justify-content: center;
       border: none;
     }
     
     #bet-btn,
     #stay-btn,
     #hit-btn {
+      display: flex;
+      justify-content: center;
+      align-self: center;
       border: none;
+      height: 50px;
+      width: 100px;
       border-radius: 15px;
-      font-size: xx-large;
+      font-size: large;
       font-family: 'Josefin Sans', sans-serif;
       cursor: pointer;
       box-shadow: 2px 10px 20px #262626;
@@ -339,7 +356,7 @@ body {
     
     .outcome-message {
       font-size: 24px;
-      padding: 20px;
+      padding: 5px;
     }
     #bet-slider {
       width: 80%;
@@ -354,14 +371,14 @@ body {
   
   .outcome-message {
     display: flex;
-    position: absolute;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    border: none;
     font-size: 24px;
     font-family: 'Prompt', sans-serif;
     text-align: center;
-    padding: 20px;
-    line-height: 60px
+    padding: 5px;
   }
 
   #reset {
@@ -397,7 +414,7 @@ body {
   #bet-slider {
     -webkit-appearance: none;
     height: 0.5rem;
-    width: 80%;
+    width: 300px;
     background-color: #39497f;
     border-radius: 20px;
     outline: none;
@@ -412,6 +429,7 @@ body {
     background-color: #7587c3;
     border-radius: 35%;
     cursor: pointer;
+    margin: -10px;
     filter: drop-shadow(0px 5px 3px #0d103b);
   }    
 
