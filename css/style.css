@@ -165,7 +165,7 @@ body {
   background-color: #7587c3;
   border-radius: 100%;
   cursor: pointer;
-  filter: drop-shadow(0px 5px 3px #0d3b0d);
+  filter: drop-shadow(0px 5px 3px #0d103b);
 
 }
 
@@ -331,7 +331,7 @@ body {
     -webkit-appearance: none;
     height: 0.5rem;
     width: 80%;
-    background-color: green;
+    background-color: #39497f;
     border-radius: 20px;
     outline: none;
     margin: 20px auto;
@@ -342,10 +342,10 @@ body {
     -webkit-appearance: none;
     width: 1.5rem;
     height: 1.5rem;
-    background-color: #c02929;
+    background-color: #7587c3;
     border-radius: 35%;
     cursor: pointer;
-    filter: drop-shadow(0px 5px 3px #0d3b0d);
+    filter: drop-shadow(0px 5px 3px #0d103b);
   }    
 
 #dealer-total, #player-total {
