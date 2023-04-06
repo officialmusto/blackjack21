@@ -210,6 +210,7 @@ function checkDecks(card) {
 }
 function toggleSlider() {
     if (betSlider.style.display === 'none') {
+      console.log(`if statement is running:`)
       betSlider.style.display = 'block'
       betBtn.innerText = 'confirm'
       stayBtn.style.display = 'none'
@@ -221,11 +222,6 @@ function toggleSlider() {
       stayBtn.style.display = 'block'
       hitBtn.style.display = 'block'
     }
-}
-function applyBet() {
-    betValue = betSlider.value
-    betBtn.innerText = `Bet: $${betValue}`
-    toggleSlider()
 }
 function checkBalanceZero() {
   dealerHandValue = decks.dealerHandValue
@@ -255,6 +251,7 @@ function checkBalanceZero() {
     }
 }
 function updateBet() {
+  // console.log(betValue)
     betValue = Math.min(betSlider.value, playerBalance)
     betBalance.innerText = `$${playerBalance - betValue}`
     document.getElementById('current-bet-value').innerText = `$${betValue}`
@@ -436,16 +433,16 @@ function determineWinner() {
     }
 }
 function resetGame() {
+  console.log((betSlider.disabled))
   frontCard0.style.display = 'block'
   frontCard1.style.display = 'block'
   dealerCard2.style.display = 'none'
   dealerCard3.style.display = 'none'
   dealerCard4.style.display = 'none'
   dealerCard1.setAttribute('src', `assets/SVGs/back-of-cards/back-blue.svg`)
-  betSlider.max = playerBalance
-  betSlider.value = betValue
-  betValue = betBalance.innerText
   playerBalance = 100
+  betSlider.max = playerBalance
+  betValue = betBalance.innerText
   betBalance.innerText = '$100'
   betAmount.innerText = 'Bet Amount '
   betValue.innerText = `$0`
