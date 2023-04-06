@@ -55,8 +55,10 @@ let frontCard3 = document.getElementById('card-front3')
 let frontCard4 = document.getElementById('card-front4')
 let frontOfCards = document.querySelectorAll('.front-of-cards')
 
-let dealerCardFront = document.getElementById('dealer-front')
-let dealerCardBack = document.getElementById('dealer-back')
+let dealerCard0 = document.getElementById('dealer-card0')
+let dealerCard1 = document.getElementById('dealer-card1')
+let dealerCard2 = document.getElementById('dealer-card2')
+let dealerCard3 = document.getElementById('dealer-card3')
 
 /* ------------------- EVENT LISTENERS ------------------- */
 hitBtn.addEventListener('click', handleHitClick)
