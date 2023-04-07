@@ -17,7 +17,7 @@
 --- 
 ---
 ### **Screenshot of the game:**
-<img width="1728" alt="Blackjack-mustoPNG" src="https://user-images.githubusercontent.com/98829614/230534582-5c88dfaf-b9ec-41ac-859f-fd3a7ae35215.png">
+![Screenshot 2023-04-07 at 10 35 22 AM](https://user-images.githubusercontent.com/98829614/230626787-e7d1ede4-bf82-4521-958c-72c6931a8498.png)
 
 ## Description:
 - *title of the game at the top.*

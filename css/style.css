@@ -18,7 +18,7 @@ body {
   margin-top: 1px;
   font-family: 'Montserrat', sans-serif;
   font-size: 90px;
-  background-image: linear-gradient(to right, #e4d9d9 53.8%,  #801f1f 50%);
+  background-image: linear-gradient(to right, #e4d9d9 53.5%,  #9a1a1a 50%);
   -webkit-background-clip: text;
   color: transparent;
   filter: drop-shadow(5px 15px 10px #222e44);
@@ -44,7 +44,7 @@ body {
   flex-direction: row;
   height: 170px;
   border-radius: 15px;
-  background-image: linear-gradient(to bottom, #efefef, #e8e8e8);
+  background-image: linear-gradient(to bottom, #efefef, #dcdcdc);
   padding: 5px;
   margin: 0px 0px 0px -80px;
   border: none;
@@ -72,9 +72,6 @@ body {
   border-radius: 15px;
   margin-bottom: -290px;
   justify-content: space-evenly;
-}
-.current-bet {
-  text-align: left;
 }
 
 #current-bet-value {
@@ -111,7 +108,7 @@ body {
   background-image: linear-gradient(#4486c0, #204463);
 }
 
-#player-balance {
+#current-player-balance {
   color: #387538;
   text-shadow: -2px -2px 0 #cecbcb, 2px -2px 0 #cecbcb, -2px 2px 0 #cecbcb, 2px 2px 0 #cecbcb;
 }
@@ -175,9 +172,9 @@ body {
   justify-content: space-between;
   flex-direction: column;
   font-size: 40px;
-  font-family: 'Prompt', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
-  line-height: 40px;
+  line-height: 80px;
   margin-top: 180px;
 }
 
@@ -266,7 +263,7 @@ body {
       align-self: right;
       height: 120px;
       border-radius: 15px;
-      background-image: linear-gradient(to bottom, #efefef, #d7d7d7);
+      background-image: linear-gradient(to bottom, #efefef, #584e4e);
       padding: 5px;
       margin: 0px 0px 0px -65px;
       border: none;
