@@ -15,40 +15,40 @@
   />
 </head>
 <body>
-  <h1 class="animate__animated animate__bounce" id="title">BlackJack</h1>
-  <div id="info-box">
+  <h1 class="animate__animated animate__fadeInTopLeft animate__fast" id="title">BlackJack</h1>
+  <div class="animate__animated animate__bounceInDown animate__faster" id="info-box">
   <div class="game-info">
-    <div id="player-balance0">Balance:
-      <span id="player-balance">$100</span>
+    <div class="animate__animated animate__bounceInLeft" id="player-balance0">Balance:
+      <span class="animate__animated animate__bounceInUp" id="player-balance">$100</span>
     </div>
     <div class="current-bet">
-      <span id="bet-amount">Bet Amount </span>
-      <span id="current-bet-value">$0</span>
+      <span class="animate__animated animate__bounceInDown animate__delay-1s"  id="bet-amount">Bet Amount </span>
+      <span class="animate__animated animate__bounceInDown animate__delay-1s" id="current-bet-value">$0</span>
     </div>
   </div>
   <div class="dealer-cards">
-    <img id="dealer-card0" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
-    <img id="dealer-card1" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
-    <img id="dealer-card2" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
-    <img id="dealer-card3" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
-    <img id="dealer-card4" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
+    <img class="animate__animated animate__bounceInDown" id="dealer-card0" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
+    <img class="animate__animated animate__bounceInRight animate__delay-1s" id="dealer-card1" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
+    <img class="animate__animated animate__bounceInDown" id="dealer-card2" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
+    <img class="animate__animated animate__bounceInDown" id="dealer-card3" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
+    <img class="animate__animated animate__bounceInDown" id="dealer-card4" src="assets/SVGs/back-of-cards/back-blue.svg" alt="dealer-cards" class="slide-in">
   </div>
   </div>
   <div class="game-container">
     <div class="front-of-cards">
-      <img id="card-front0" src="assets/SVGs/front-of-cards/Joker1.svg" alt="player-cards" class="slide-in">
-      <img id="card-front1" src="assets/SVGs/front-of-cards/Joker2.svg" alt="player-cards" class="slide-in">
+      <img class="animate__animated animate__bounceInLeft"  id="card-front0" src="assets/SVGs/front-of-cards/Joker1.svg" alt="player-cards" class="slide-in">
+      <img class="animate__animated animate__bounceInRight"  id="card-front1" src="assets/SVGs/front-of-cards/Joker2.svg" alt="player-cards" class="slide-in">
       <img id="card-front2" src="assets/SVGs/front-of-cards/Joker1.svg" alt="player-cards" class="slide-in">
       <img id="card-front3" src="assets/SVGs/front-of-cards/Joker2.svg" alt="player-cards" class="slide-in">
       <img id="card-front4" src="assets/SVGs/front-of-cards/Joker1.svg" alt="player-cards" class="slide-in">
     </div>
     <div class="buttons">
-      <button id="hit-btn">HIT</button>
+      <button class="animate__animated animate__rotateInUpRight animate__faster" id="hit-btn">HIT</button>
       <div class="bet-actions">
-        <button id="bet-btn">$$$</button>
+        <button class="animate__animated animate__jackInTheBox animate__faster" id="bet-btn">$$$</button>
         <input type="range" min="1" max="100" step="1" value="1" id="bet-slider"></input>
       </div>
-      <button id="stay-btn">STAY</button>
+      <button class="animate__animated animate__rotateInUpLeft animate__faster" id="stay-btn">STAY</button>
     </div>
   </div>
   <div class="outcome-message">
