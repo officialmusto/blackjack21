@@ -31,7 +31,7 @@ let dealerHand = decks.dealer
 
 let playerBalance = 100
 /* ------------------- CACHED REFERENCES ------------------- */
-title = document.querySelector('.title')
+title = document.querySelector('#title')
 infoBox = document.querySelector('.game-info')
 
 let hitBtn = document.getElementById('hit-btn')
