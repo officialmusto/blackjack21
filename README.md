@@ -13,20 +13,33 @@
 
 *If the player's hand value exceeds 21, they bust and lose the game. If the dealer busts, the player wins. If neither busts, the higher hand value wins.*
 
-**If there is a tie, the game ends in a draw and the amount betted gets returned.**
-
+### **If there is a tie, the game ends in a draw and the amount betted gets returned.**
+--- 
+---
+### **Screenshot of the game:**
 <img width="1728" alt="Blackjack-mustoPNG" src="https://user-images.githubusercontent.com/98829614/230534582-5c88dfaf-b9ec-41ac-859f-fd3a7ae35215.png">
 
-# Technologies Used
-## HTML
+## Description:
+- *title of the game at the top.*
+- *$$$ on left side.*
+- *dealer cards on the right*
+- *player hand being shown*
+- *3 buttons displayed with their action names.*
 
-## CSS
+---
+---
 
-## JAVASCRIPT
+## **Technologies Used**
 
-## [MDN](https://developer.mozilla.org/en-US/)
+### [MDN](https://developer.mozilla.org/en-US/)
 
-## [STACKOVERFLOW](https://stackoverflow.co/)
+### [STACKOVERFLOW](https://stackoverflow.co/)
+
+#### HTML
+
+#### CSS
+
+#### JAVASCRIPT
 ---
 
 ## *To run this project locally:*
