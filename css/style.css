@@ -17,7 +17,7 @@ body {
   justify-content: center;
   margin-top: 1px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 90px;
+  font-size: 100px;
   background-image: linear-gradient(to right, #e4d9d9 53.5%,  #9a1a1a 50%);
   -webkit-background-clip: text;
   color: transparent;
@@ -89,6 +89,7 @@ body {
 .dealer-cards {
   display: flex;
   flex-direction: row;
+  border-radius: 15px;
 }
 
 .game-info {
@@ -107,6 +108,8 @@ body {
   color: #e2dddd;
   background-image: linear-gradient(#4486c0, #204463);
 }
+
+
 
 #current-player-balance {
   color: #387538;
@@ -133,7 +136,7 @@ body {
   border: none;
   border-radius: 15px;
   font-size: x-large;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   cursor: pointer;
   height: 80px;
   width: 150px;
@@ -232,13 +235,12 @@ body {
 @media (max-width: 767px) {
 
     body {
-      width: 100vw;
-      height: 100vh;
+      overflow-x: hidden;
+      max-height: 100%;
       margin: 0px 0px -200px;
       display: flex;
       flex-direction: column;
-      background-image: linear-gradient(135deg, #678cb4, #c7a48e);
-      backdrop-filter: blur(20px);
+      background-image: linear-gradient(#678cb4, #c7a48e);
 
     }
     
@@ -246,28 +248,34 @@ body {
       display: flex;
       align-self: center;
       justify-content: center;
+      margin-top: 1px;
+      margin-right: 20px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 50px;
-      margin-right: 18px;
-      color: #ffe4c4;
-      filter: drop-shadow(5px 12px 5px #4b4b4b);
+      font-size: 60px;
+      background-image: linear-gradient(to right, #e4d9d9 53.5%,  #9a1a1a 50%);
+      -webkit-background-clip: text;
+      color: transparent;
+      filter: drop-shadow(5px 10px 8px #222e44);
       border: none;
+      width: 100%;
       border-radius: 20px;
+      padding: 20px;
+      box-shadow: 5px 20px 40px #1c2534;
     }
 
     
     #dealer-card0, #dealer-card1, #dealer-card2, #dealer-card3, #dealer-card4 {
       display: flex;
+      justify-content: center;
+      align-self: center;
       flex-direction: row;
-      justify-content: right;
-      align-self: right;
-      height: 120px;
+      height: 100px;
       border-radius: 15px;
-      background-image: linear-gradient(to bottom, #efefef, #584e4e);
-      padding: 5px;
-      margin: 0px 0px 0px -65px;
+      background-image: linear-gradient(to bottom, #efefef, #dcdcdc);
+      margin-right: 20px;
+      margin-left: -80px;
       border: none;
-      filter: drop-shadow(0px 20px 10px #575757);
+      box-shadow: 5px 10px 20px #1c2534;
     }
 
     .front-of-cards {
@@ -279,18 +287,16 @@ body {
     }
   
     
-    #card-front0,
-    #card-front1,
-    #card-front2,
-    #card-front3,
-    #card-front4 {
+    #card-front0, #card-front1, #card-front2, #card-front3, #card-front4 {
       display: flex;
-      height: 150px;
+      flex-direction: row;
+      height: 125px;
       border-radius: 15px;
-      background-image: linear-gradient(to bottom, #efefef, #d1d1d1);
+      background-image: linear-gradient(to bottom, #ffffff, #c3c4c5);
+      padding: 5px;
+      margin: 0px -75px 30px 0px;
       border: none;
-      margin-left: 0px;
-      filter: drop-shadow(0px 20px 10px #575757);
+      box-shadow: 10px 20px 20px #303137;
     }
     
     #info-box {
@@ -298,34 +304,44 @@ body {
       border: none;
       justify-content: space-between;
       align-items: center;
+      border: solid;
     }
     
     .game-info {
-      padding: 3px;
       display: flex;
       flex-direction: column;
-      text-align: left;
+      text-align: center;
+      padding: 10px;
+      margin: 0px -100px 0px 0px;
       border: none;
       border-radius: 17px;
-      box-shadow: 5px 10px 20px #575757;
+      box-shadow: 10px 20px 30px #1c2534;
       width: 200px;
       height: 100px;
-      font-size: 18px;
+      font-size: 30px;
       font-family: 'Montserrat', sans-serif;
-      color: #575757;
-      background-image: linear-gradient(to bottom, #efefef, #c4c4c4)
-    }
-
-    #player-balance {
-      color: #2b8e2b;
-      font-size: 25px;
+      color: #e2dddd;
+      background-image: linear-gradient(#4486c0, #204463);
     }
     
+
+    #player-balance {
+      color: #e2dddd;
+      font-size: 20px;
+      text-align: right;
+    }
+    
+    #current-bet {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+    }
+
     #current-bet-value{
-      margin-top: 0px;
+      margin-top: -20px;
       height: 60px;
       width: 100px;
-      font-size: 30px;
+      font-size: 20px;
       text-align: right;
       background-image: linear-gradient(to bottom, #fde8e8, #c9b4b4);
     }
@@ -348,78 +364,76 @@ body {
       border: none;
     }
     
-    #bet-btn,
-    #stay-btn,
-    #hit-btn {
-      display: flex;
-      justify-content: center;
-      align-self: center;
+    #bet-btn, #stay-btn, #hit-btn {
       border: none;
-      height: 50px;
-      width: 100px;
       border-radius: 15px;
       font-size: large;
-      font-family: 'Josefin Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       cursor: pointer;
-      box-shadow: 2px 10px 20px #262626;
+      height: 80px;
+      width: 100px;
+      box-shadow: 10px 20px 40px #1c2534;
     }
     
     #bet-btn {
-      color: #92dc92;
-      background-color: #1a551a;
+      color: #5cb35c;
+      background-image: linear-gradient(to bottom, #225d22, #0e2d0e);
+      text-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
     }
     
-    #stay-btn {
-      color: #eaa4a4;
-      background-color: #602020;
+    #stay-btn{
+      color: #c88383;
+      background-image: linear-gradient(to bottom, #8c3a3a, #4b1010);
+      text-shadow: 1px 2px 3px #2b0909;
     }
     
     #hit-btn {
-      color: #a3c8ed;
-      background-color: #1d3055;
+      color: #7196bb;
+      background-image: linear-gradient(#29406d, #0f223a);
+      text-shadow: 1px 4px 3px #0f223a;
     }
     
-    .outcome-message {
-      font-size: 24px;
-      padding: 5px;
-    }
     #bet-slider {
       width: 80%;
       margin: 20px auto;
     }
   
-  .bet-actions {
+    .bet-actions {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    }
   
-  .outcome-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: none;
-    font-size: 24px;
-    font-family: 'Prompt', sans-serif;
-    text-align: center;
-    padding: 5px;
-  }
+    .outcome-message{
+      display: flex;
+      flex-direction: row;
+      align-self: center;
+      justify-content: space-between;
+      flex-direction: column;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      line-height: 80px;
+      margin-top: 180px;
+      margin-right: 20px;
+    }
 
-  #reset {
-    border: none;
-    border-radius: 15px;
-    height: 50px;
-    width: 220px;
-    font-size: 1.5rem;
-    font-family: 'Josefin Sans', sans-serif;
-    background-color: #e28e8e;
-    cursor: pointer;
-    color: #ffffff;
-    filter: drop-shadow(0px 8px 15px #1d1d1d);
-  }
+    #reset {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      width: 200px;
+      border: none;
+      border-radius: 15px;
+      font-size: xx-large;
+      font-family: 'Josefin Sans', sans-serif;
+      background-color: #e28e8e;
+      cursor: pointer;
+      color: #ffffff;
+      filter: drop-shadow(0px 8px 15px #1d1d1d);
+    }
   
-  #next-turn {
+    #next-turn {
     display: flex;
     justify-content: center;
     align-self: center;
@@ -434,9 +448,9 @@ body {
     height: 60px;
     width: 370px;
     filter: drop-shadow(0px 8px 15px #1d1d1d);
-  }
+    } 
 
-  #bet-slider {
+    #bet-slider {
     -webkit-appearance: none;
     height: 0.5rem;
     width: 300px;
@@ -445,9 +459,9 @@ body {
     outline: none;
     margin: 20px auto;
     filter: drop-shadow(0px 10px 5px #878787);
-  }
+    }
   
-  #bet-slider::-webkit-slider-thumb {
+    #bet-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 1.5rem;
     height: 1.5rem;
@@ -456,10 +470,9 @@ body {
     cursor: pointer;
     margin: -10px;
     filter: drop-shadow(0px 5px 3px #0d103b);
-  }    
+    }    
 
-#dealer-total, #player-total {
-  line-height: 1px;
-}
-
+    #dealer-total, #player-total {
+    line-height: 1px;
+    }
 }

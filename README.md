@@ -17,7 +17,8 @@
 --- 
 ---
 ### **Screenshot of the game:**
-![Screenshot 2023-04-07 at 10 35 22 AM](https://user-images.githubusercontent.com/98829614/230626787-e7d1ede4-bf82-4521-958c-72c6931a8498.png)
+![Screenshot 2023-04-07 at 10 46 43 AM](https://user-images.githubusercontent.com/98829614/230628483-ff084f09-bea4-49e1-ac2d-0545a45ef323.png)
+
 
 ## Description:
 - *title of the game at the top.*
