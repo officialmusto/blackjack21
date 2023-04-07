@@ -32,16 +32,19 @@
 
 ## **Technologies Used**
 
-### [MDN](https://developer.mozilla.org/en-US/)
+- ### [MDN](https://developer.mozilla.org/en-US/)
 
-### [STACKOVERFLOW](https://stackoverflow.co/)
+- #### HTML
 
-#### HTML
+- #### CSS
 
-#### CSS
+- #### JAVASCRIPT
 
-#### JAVASCRIPT
+- ### [STACKOVERFLOW](https://stackoverflow.co/)
 ---
+---
+## **Attributions Used**
+- [Deck of Cards (Etsy)](https://www.etsy.com/listing/1390690460/playing-card-svg-playing-card-suits-svg?click_key=4fc0fb79b96090535d5e3782bff6b1344cecefdb%3A1390690460&click_sum=3f3546e0&ref=shop_home_feat_1&pro=1&sts=1)
 
 ## *To run this project locally:*
 ### **Clone the repository to your local machine.**
