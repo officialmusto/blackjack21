@@ -1,7 +1,5 @@
-
 /* ----------------------- Psuedo Code for game of -----------------------
 /                                  BLACKJACK
-
 GAME STRUCTURE:
 -1 BET button
 -1 RESET button to reset all activity, bets, and money in game
@@ -9,42 +7,31 @@ GAME STRUCTURE:
 -1 STAY button to end turn of P1 automatically and end all betting activity from P1
 ? All in button?
 -52 CARDS that have values according to their suit and value. 
-
-// Step 1: Modify the Deck class
-
-// Add a dealer property to the Deck class that will store the dealer's hand.
-// Step 2: Update the init function
-
-// Deal two initial cards for both the player and the dealer during game initialization.
-// Step 3: Add dealer's logic function
-
-// Create a function playDealerHand that will handle the dealer's logic. This function will automatically draw cards for the dealer until the dealer's hand value is at least 17.
-// Step 4: Modify the stayLogic function
-
-// Update the stayLogic function to trigger the dealer's turn by calling the playDealerHand function when the 'Stay' button is clicked.
-
-// Step 5: Determine the winner
-
-// Create a function determineWinner that will compare the player's and dealer's hand values and determine the winner.
-
-Step 6: Update the render function
-
-Modify the render function to handle both player and dealer cards. Consider hiding one of the dealer's cards until the end of the round (you can use CSS to hide the card and reveal it later).
-
-// Step 7: Modify the game flow
-// After the dealer's turn is complete, call the determineWinner function to determine the winner and display the result.
-// Here's a summary of the steps to implement the dealer functionality:
-
-// Modify the Deck class to store the dealer's hand.
-// Update the init function to deal two initial cards for both the player and the dealer.
-// Create a function playDealerHand to handle the dealer's logic.
-// Update the stayLogic function to trigger the dealer's turn by calling playDealerHand.
-// Create a function determineWinner to determine the winner based on player's and dealer's hand values.
-// Update the render function to handle both player and dealer cards.
-// Modify the game flow to determine the winner and display the result after the dealer's turn is complete.
-
-!BET AMOUNT NEEDS TO DOUBLE AFTER WINNING. 
-!CHECK AND MAKE SURE ALL OTHER BET MECHANICS WORK.
-
---------------------------------------------------------------------------------------------------------- */
-
+-
+GAME START:
+-P1 is given $100 to start game.
+!-IF P1 DOES NOT HAVE MONEY, GAME CANNOT START
+-A minimum of a $1 bet is needed in order to proceed and keep continuation of game.
+-Dealer deals P1 2 Cards
+-2 cards face UP given to P1 after betting. 
+-2 cards face DOWN given to dealer after
+? Find a way to alternate math.random between P1 and dealer when dealing cards?
+GAME TURNS:
+-Start with dealer last (!dealer or something) so P1 goes FIRST
+!-IF CARDS EQUAL 21, AUTOMATICALLY WIN, MULTIPLY BETS BY 1.5X, AND COMMENCE NEXT TURN
+-P1 has choice of choosing either HIT or STAY
+!-IF 'HIT', RANDOMIZED CARD THAT HAS NOT BEEN SELECTED WILL BE ADDED TO P1'S HAND
+  !IF NEW CARD ADDED TOTALS HAND TO > 21, {
+    !AUTOMATICALLY LOSE, FOLD ALL BETS, AND COMMENCE NEXT TURN
+  !} ELSE IF CARD === A {
+    !ASK P1 IF A === 1 || A === 11, {
+      !IF P1 CHOOSES 1, A === 1
+      !ELSE A === 11
+    !} ELSE, ADD CARD TO HAND AND COMBINE TOTAL AND CHECKS AGAIN TO SEE IF CARD > 21, REPEATS PROCESS.
+!-IF 'STAY', REVEAL DEALER CARDS
+    !IF DEALER CARDS > 21, AUTOMATICALLY WIN, MULTIPLY BETS BY 1.5X, AND COMMENCE NEXT TURN
+    !ELSE IF DEALER CARDS === 21, AUTOMATICALLY LOSE, FOLD ALL BETS, AND COMMENCE NEXT TURN
+    !ELSE, COMPARE P1 HAND AND DEALER HAND,
+  !IF DEALER HAND >= P1 HAND, AUTOMATICALLY LOSE, FOLD ALL BETS, AND COMMENCE NEXT TURN
+  !IF DEALER HAND < P1 HAND, AUTOMATICALLY WIN, MULTIPLY BETS BY 1.5X, AND COMMENCE NEXT TURN
+-------------------------------------------------------------------------------- */
