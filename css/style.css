@@ -235,7 +235,7 @@ body {
 
     }
     
-    .title {
+    #title {
       display: flex;
       align-self: center;
       justify-content: center;
