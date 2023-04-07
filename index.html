@@ -22,7 +22,7 @@
       <span class="animate__animated animate__bounceInUp" id="player-balance">$100</span>
     </div>
     <div class="current-bet">
-      <span class="animate__animated animate__bounceInDown animate__delay-1s"  id="bet-amount">Bet Amount </span>
+      <span class="animate__animated animate__bounceInDown animate__delay-1s animate__fast"  id="bet-amount">Bet Amount </span>
       <span class="animate__animated animate__bounceInDown animate__delay-1s" id="current-bet-value">$0</span>
     </div>
   </div>
@@ -37,7 +37,7 @@
   <div class="game-container">
     <div class="front-of-cards">
       <img class="animate__animated animate__bounceInLeft"  id="card-front0" src="assets/SVGs/front-of-cards/Joker1.svg" alt="player-cards" class="slide-in">
-      <img class="animate__animated animate__bounceInRight"  id="card-front1" src="assets/SVGs/front-of-cards/Joker2.svg" alt="player-cards" class="slide-in">
+      <img class="animate__animated animate__bounceInRight animate__delay-1s animate__faster"  id="card-front1" src="assets/SVGs/front-of-cards/Joker2.svg" alt="player-cards" class="slide-in">
       <img id="card-front2" src="assets/SVGs/front-of-cards/Joker1.svg" alt="player-cards" class="slide-in">
       <img id="card-front3" src="assets/SVGs/front-of-cards/Joker2.svg" alt="player-cards" class="slide-in">
       <img id="card-front4" src="assets/SVGs/front-of-cards/Joker1.svg" alt="player-cards" class="slide-in">
@@ -45,10 +45,10 @@
     <div class="buttons">
       <button class="animate__animated animate__rotateInUpRight animate__faster" id="hit-btn">HIT</button>
       <div class="bet-actions">
-        <button class="animate__animated animate__jackInTheBox animate__faster" id="bet-btn">$$$</button>
+        <button class="animate__animated animate__jackInTheBox animate__delay-1s animate__fast" id="bet-btn">$$$</button>
         <input type="range" min="1" max="100" step="1" value="1" id="bet-slider"></input>
       </div>
-      <button class="animate__animated animate__rotateInUpLeft animate__faster" id="stay-btn">STAY</button>
+      <button class="animate__animated animate__rotateIn" id="stay-btn">STAY</button>
     </div>
   </div>
   <div class="outcome-message">
