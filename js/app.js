@@ -97,10 +97,14 @@ function init() {
     betSlider.style.display = 'none'
     return
   }
+  
   nextBtn.style.display = 'none'
 }
 function handleHitClick() {
     playerOneHand.push(shuffledDeck.pop())
+    if (calculatePlayerHandValue(playerOneHand) === 21 && calculateDealerHandValue(dealerHand) !== 21) {
+      console.log('OVER 21')
+    }
     render()
 }
 function generateCard() {
@@ -131,8 +135,16 @@ function playerOneTurn() {
   dealerCard0.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[0].combined}.svg`)
 }
 function dealerTurn() {
-  while (calculateDealerHandValue() < 17) {
-    dealerHand.push(shuffledDeck.pop())
+  //I got some help, but not sure if this is exactly what we were looking for.
+  let dealerHandValue = calculateDealerHandValue(dealerHand)
+  let isSoft17 = dealerHandValue === 17 && dealerHand.some(card => card.value === 'A')
+
+  while (dealerHandValue < 17 || isSoft17) {
+    const newCard = shuffledDeck.pop()
+    dealerHand.push(newCard)
+    dealerHandValue = calculateDealerHandValue(dealerHand)
+    isSoft17 = dealerHandValue === 17 && dealerHand.some(card => card.value === 'A')
+  
     if (dealerHand[0]){
     dealerCard0.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[0].combined}.svg`)
     dealerCard0.style.display = 'block'
