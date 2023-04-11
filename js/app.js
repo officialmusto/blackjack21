@@ -269,9 +269,6 @@ function determineWinner() {
   let dealerHandValue = calculateDealerHandValue(dealerHand)
   let playerHandValue = calculatePlayerHandValue(playerOneHand)
 
-  console.log(`Dealer hand value: ${dealerHandValue}`)
-  console.log(`Player hand value: ${playerHandValue}`)
-
   if (dealerHandValue > 21 && playerHandValue > 21) {
     hitBtn.style.pointerEvents = "none"
     stayBtn.style.pointerEvents = "none"
