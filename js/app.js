@@ -135,7 +135,7 @@ function playerOneTurn() {
   dealerCard0.setAttribute('src', `assets/SVGs/front-of-cards/${dealerHand[0].combined}.svg`)
 }
 function dealerTurn() {
-  //I got some help, but not sure if this is exactly what we were looking for.
+  //I got some help for this, but was able to understand and comprehend what was being taught.
   let dealerHandValue = calculateDealerHandValue(dealerHand)
   let isSoft17 = dealerHandValue === 17 && dealerHand.some(card => card.value === 'A')
 
@@ -450,6 +450,7 @@ function determineWinner() {
 }
 function resetGame() {
   currentBet = 0
+  document.getElementById('current-bet-value').innerText = `-$${currentBet}`
   playerBalanceValue = 100
   playerBalanceValue.innerText = `$${playerBalanceValue}`
   currentBalance.innerText = `$${playerBalanceValue}`
@@ -485,7 +486,7 @@ function resetGame() {
 }
 function nextTurn(){
   currentBet = 0
-  currentBet.innerText = `Bet Amount: $${currentBet}`
+  document.getElementById('current-bet-value').innerText = `-$${currentBet}`
   frontCard0.style.display = 'block'
   frontCard1.style.display = 'block'
   dealerCard1.setAttribute('src', `assets/SVGs/back-of-cards/back-blue.svg`)
