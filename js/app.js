@@ -97,12 +97,14 @@ function init() {
     betSlider.style.display = 'none'
     return
   }
-  
+  checkPlayerHandValue()
+  hitBtn.style.display = 'none'
+  stayBtn.style.display = 'none'
   nextBtn.style.display = 'none'
 }
 function handleHitClick() {
   playerOneHand.push(shuffledDeck.pop())
-  render()
+  playerOneCards()
   checkPlayerHandValue()
 }
 function generateCard() {
@@ -232,6 +234,7 @@ function toggleSlider() {
       betSlider.style.display = 'none'
       stayBtn.style.display = 'block'
       hitBtn.style.display = 'block'
+      betBtn.style.display = 'none'
     }
 }
 function checkBalanceZero() {
@@ -287,7 +290,7 @@ function determineWinner() {
     setTimeout(function(){
       checkBalanceZero()
       blurFrontOfCards()
-      playerBalanceValue += currentBet * 1
+      playerBalanceValue += currentBet
       currentBalance.innerText = `$${playerBalanceValue}`
       betSlider.max = playerBalanceValue
       currentBet = 0
@@ -314,7 +317,7 @@ function determineWinner() {
         checkBalanceZero()
         blurFrontOfCards()
         checkPlayerHandValue()
-        playerBalanceValue += currentBet * 1
+        playerBalanceValue += currentBet * 1.5
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue
@@ -397,7 +400,7 @@ function determineWinner() {
         checkBalanceZero()
         checkPlayerHandValue()
         blurFrontOfCards()
-        playerBalanceValue += currentBet * 1
+        playerBalanceValue += currentBet * 1.5
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue
@@ -512,6 +515,7 @@ function nextTurn(){
   playerOneHand.length = 0
   dealerHand.length = 0
   init()
+
 }
 function render() {
   dealerCard0.style.display = 'block'
