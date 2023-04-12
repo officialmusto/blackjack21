@@ -3,9 +3,9 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   display: flex;
-  height: 100vh;
+  max-height: 100%;
   width: 100vw;
   flex-direction: column;
   background-image: linear-gradient(#9bb8d0, #879098);
@@ -23,6 +23,7 @@ body {
   color: transparent;
   filter: drop-shadow(5px 15px 15px #222e44);
   border: none;
+  margin-top: -45px;
 }
 
 .front-of-cards {
@@ -218,7 +219,7 @@ body {
   background-image: linear-gradient(#a1b2c1, #61676e);
   border-radius: 20px;
   outline: none;
-  margin: 30px;
+  margin: 25px;
   box-shadow: 10px 30px 20px #1c2534;
   z-index: 0;
 }
