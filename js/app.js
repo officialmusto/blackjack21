@@ -341,7 +341,6 @@ function determineWinner() {
         checkBalanceZero()
         checkPlayerHandValue()
         blurFrontOfCards()
-        playerBalanceValue += currentBet * 1
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue
@@ -357,7 +356,6 @@ function determineWinner() {
         finalMessage.innerText = `Player busts! Dealer wins!`
         dealerTotal.innerText = `Dealer Total : ${dealerHandValue}`
         playerTotal.innerText = `Player Total : ${playerHandValue}`
-        currentBalance.innerText = `$${currentBalance}`
         checkBalanceZero()
     }, 2000)
   } else if (dealerHandValue > playerHandValue) {
@@ -450,8 +448,6 @@ function resetGame() {
   currentBet = 0
   document.getElementById('current-bet-value').innerText = `-$${currentBet}`
   playerBalanceValue = 100
-  playerBalanceValue.innerText = `$${playerBalanceValue}`
-  currentBalance.innerText = `$${playerBalanceValue}`
   currentBalance.innerText = `$${playerBalanceValue}`
   frontCard0.style.display = 'block'
   frontCard1.style.display = 'block'
@@ -489,10 +485,10 @@ function nextTurn(){
   frontCard1.style.display = 'block'
   dealerCard1.setAttribute('src', `assets/SVGs/back-of-cards/back-blue.svg`)
   dealerCard2.style.display = 'none'
-  dealerCard3.style.display = 'none'
   frontOfCards.forEach(function(card) {
   card.style.filter = 'none'
   })
+  dealerCard3.style.display = 'none'
   betBtn.innerText = '$$$'
   hitBtn.style.pointerEvents = 'auto'
   stayBtn.style.pointerEvents = 'auto'
