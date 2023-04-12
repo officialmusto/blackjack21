@@ -316,7 +316,7 @@ function determineWinner() {
         checkBalanceZero()
         blurFrontOfCards()
         checkPlayerHandValue()
-        playerBalanceValue += currentBet * 1.5
+        playerBalanceValue += currentBet * 1
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue
@@ -343,7 +343,7 @@ function determineWinner() {
         checkBalanceZero()
         checkPlayerHandValue()
         blurFrontOfCards()
-        playerBalanceValue -= currentBet
+        playerBalanceValue -= currentBet * 1
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue
@@ -400,7 +400,7 @@ function determineWinner() {
         checkBalanceZero()
         checkPlayerHandValue()
         blurFrontOfCards()
-        playerBalanceValue += currentBet * 1.5
+        playerBalanceValue += currentBet * 1
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue
@@ -427,7 +427,6 @@ function determineWinner() {
         checkBalanceZero()
         checkPlayerHandValue()
         blurFrontOfCards()
-        playerBalanceValue += currentBet
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue
