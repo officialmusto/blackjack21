@@ -25,6 +25,7 @@
 - JAVASCRIPT
 ---
 ## Attributions
+- [FAVICON](https://www.pngegg.com/en/png-spnwc)
 - [Deck of Cards (Etsy)](https://www.etsy.com/listing/1390690460/playing-card-svg-playing-card-suits-svg?click_key=4fc0fb79b96090535d5e3782bff6b1344cecefdb%3A1390690460&click_sum=3f3546e0&ref=shop_home_feat_1&pro=1&sts=1)
 - [MDN](https://developer.mozilla.org/en-US/)
 - [Stackoverflow](https://stackoverflow.co/)
