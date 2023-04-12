@@ -290,7 +290,6 @@ function determineWinner() {
     setTimeout(function(){
       checkBalanceZero()
       blurFrontOfCards()
-      playerBalanceValue += currentBet
       currentBalance.innerText = `$${playerBalanceValue}`
       betSlider.max = playerBalanceValue
       currentBet = 0
@@ -344,6 +343,7 @@ function determineWinner() {
         checkBalanceZero()
         checkPlayerHandValue()
         blurFrontOfCards()
+        playerBalanceValue -= currentBet
         currentBalance.innerText = `$${playerBalanceValue}`
         currentBet = 0
         betSlider.max = playerBalanceValue

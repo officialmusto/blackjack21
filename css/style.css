@@ -17,15 +17,12 @@ body {
   justify-content: center;
   margin-top: 1px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 100px;
+  font-size: 125px;
   background-image: linear-gradient(to right, #e4d9d9 53.5%,  #9a1a1a 50%);
   -webkit-background-clip: text;
   color: transparent;
-  filter: drop-shadow(5px 15px 10px #222e44);
+  filter: drop-shadow(5px 15px 15px #222e44);
   border: none;
-  border-radius: 20px;
-  padding: 50px;
-  box-shadow: 5px 20px 40px #1c2534;
 }
 
 .front-of-cards {
@@ -48,7 +45,7 @@ body {
   padding: 5px;
   margin: 0px 0px 0px -80px;
   border: none;
-  box-shadow: 5px 10px 20px #1c2534;
+  box-shadow: 5px 7px 15px #1c2534;
 
 }
 
@@ -61,7 +58,7 @@ body {
   padding: 5px;
   margin: 0px -75px 30px 0px;
   border: none;
-  box-shadow: 20px 40px 40px #1c2534;
+  box-shadow: 5px 20px 40px #1c2534;
 }
 
 #info-box {
@@ -81,7 +78,7 @@ body {
   color: #982323;
   text-shadow: -2px -2px 0 #cecbcb, 2px -2px 0 #cecbcb, -2px 2px 0 #cecbcb, 2px 2px 0 #cecbcb;
   border-radius: 15px;
-  box-shadow: 20px 40px 40px #1c2534;
+  box-shadow: 10px 3px 30px #1c2534;
   padding: 20px;
   background-image: linear-gradient(#e27e7e, #703c3c);
 }
@@ -100,7 +97,7 @@ body {
   margin: 0px -100px 0px 0px;
   border: none;
   border-radius: 17px;
-  box-shadow: 10px 20px 30px #1c2534;
+  box-shadow: 5px 10px 30px #1c2534;
   width: 480px;
   height: 200px;
   font-size: 50px;
@@ -140,7 +137,7 @@ body {
   cursor: pointer;
   height: 80px;
   width: 150px;
-  box-shadow: 10px 20px 40px #1c2534;
+  box-shadow: 5px 10px 20px #1c2534;
 }
 #bet-btn {
   color: #5cb35c;
