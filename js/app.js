@@ -101,11 +101,9 @@ function init() {
   nextBtn.style.display = 'none'
 }
 function handleHitClick() {
-    playerOneHand.push(shuffledDeck.pop())
-    if (calculatePlayerHandValue(playerOneHand) === 21 && calculateDealerHandValue(dealerHand) !== 21) {
-      console.log('OVER 21')
-    }
-    render()
+  playerOneHand.push(shuffledDeck.pop())
+  render()
+  checkPlayerHandValue()
 }
 function generateCard() {
   suitIdx = Math.floor(Math.random() * suits.length)
@@ -556,7 +554,10 @@ function playerOneCards() {
   }
 }
 function checkPlayerHandValue() {
-  if (calculatePlayerHandValue() > 21) {
+  let playerHandValue = calculatePlayerHandValue(playerOneHand)
+  if (playerHandValue >= 21) {
+    hitBtn.disabled = true
     stayLogic()
+    betBtn.disabled = true
   }
 }
